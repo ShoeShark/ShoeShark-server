@@ -1,4 +1,4 @@
-package logging
+package logger
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func InitLogger(config *config.Config) error {
+func InitLogger(config *config.Config) {
 	// 设置日志格式。
 	log.SetFormatter(&log.TextFormatter{
 		FullTimestamp:   true,
@@ -48,5 +48,4 @@ func InitLogger(config *config.Config) error {
 		log.SetOutput(logger)
 	}
 
-	return nil
 }

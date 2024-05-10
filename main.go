@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"github.com/shoe-shark/shoe-shark-service/global"
-	"github.com/shoe-shark/shoe-shark-service/pkg/logging"
+	"github.com/shoe-shark/shoe-shark-service/pkg/logger"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/routers"
 	log "github.com/sirupsen/logrus"
@@ -19,7 +19,7 @@ import (
 func main() {
 
 	conf := config.InitConfig()
-	logging.InitLogConfig(conf)
+	logger.InitLogger(conf)
 	rep := repository.InitDb(conf)
 
 	global.CONFIG = conf

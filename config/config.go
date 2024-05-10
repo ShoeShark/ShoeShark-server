@@ -11,7 +11,7 @@ type Config struct {
 		Level   string `yaml:"level"`
 		MaxSize int    `yaml:"max_size"`
 		Enable  bool   `yaml:"enable"`
-	} `yaml:"logging"`
+	} `yaml:"logger"`
 	Database struct {
 		Pg struct {
 			Host     string `yaml:"host"`
