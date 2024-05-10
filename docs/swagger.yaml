@@ -1,0 +1,34 @@
+basePath: /shoe-shark
+definitions:
+  schema.DemoForm:
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: shoe-shark-service API
+  title: shoe-shark-service API
+  version: "1.0"
+paths:
+  /api/v1/demo/create:
+    put:
+      consumes:
+      - application/json
+      description: add a new pet to the store
+      parameters:
+      - description: DemoForm contains all necessary pet information
+        in: body
+        name: demo
+        required: true
+        schema:
+          $ref: '#/definitions/schema.DemoForm'
+      produces:
+      - application/json
+      responses: {}
+      summary: Add a new pet to the store
+      tags:
+      - 测试
+swagger: "2.0"

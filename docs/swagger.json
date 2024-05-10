@@ -1,0 +1,52 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "shoe-shark-service API",
+        "title": "shoe-shark-service API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/shoe-shark",
+    "paths": {
+        "/api/v1/demo/create": {
+            "put": {
+                "description": "add a new pet to the store",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "测试"
+                ],
+                "summary": "Add a new pet to the store",
+                "parameters": [
+                    {
+                        "description": "DemoForm contains all necessary pet information",
+                        "name": "demo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.DemoForm"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "schema.DemoForm": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
