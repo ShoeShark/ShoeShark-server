@@ -26,11 +26,11 @@ func CORSMiddleware() gin.HandlerFunc {
 	}
 }
 
-func InitRouter(config *config.Config) *gin.Engine {
-
+func InitRouter() *gin.Engine {
+	cfg := config.GetConfig()
 	r := gin.New()
 
-	if config.AppMode == "dev" {
+	if cfg.AppMode == "dev" {
 		r.Use(CORSMiddleware())
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}

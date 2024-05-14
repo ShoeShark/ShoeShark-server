@@ -9,8 +9,3 @@ type Demo struct {
 func (a *Demo) TableName() string {
 	return "sst.demo"
 }
-
-type DemoForm struct {
-	Code string `json:"code"`
-	Name string `json:"name"`
-}

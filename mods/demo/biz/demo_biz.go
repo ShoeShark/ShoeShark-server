@@ -3,18 +3,20 @@ package biz
 import (
 	"context"
 	"errors"
-	"github.com/shoe-shark/shoe-shark-service/global"
-	"github.com/shoe-shark/shoe-shark-service/mods/demo/dao"
+	"github.com/shoe-shark/shoe-shark-service/mods/demo/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/demo/schema"
+	"github.com/shoe-shark/shoe-shark-service/repository"
 )
 
-func SaveOne(ctx context.Context, item *schema.DemoForm) error {
+func CreateDemo(ctx context.Context, item *req.DemoCreateReq) error {
 	demo := &schema.Demo{
 		Name: item.Name,
 		Code: item.Code,
 	}
 
-	err := dao.SaveOne(global.REP, demo)
+	rp := repository.GetPGRepository()
+
+	err := rp.SaveOne(demo)
 	if err != nil {
 		return errors.New("save demo error")
 	}

@@ -2,8 +2,8 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/shoe-shark/shoe-shark-service/mods/demo/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/demo/biz"
-	"github.com/shoe-shark/shoe-shark-service/mods/demo/schema"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 )
 
@@ -18,16 +18,16 @@ import (
 func Create(c *gin.Context) {
 	ctx := c.Request.Context()
 
-	var item schema.DemoForm
+	var item req.DemoCreateReq
 	if err := c.BindJSON(&item); err != nil {
-		util.ResError(c, "body serialize error", nil)
+		util.ResErrorWithMsg(c, "body serialize error")
 		return
 	}
 
-	if err := biz.SaveOne(ctx, &item); err != nil {
-		util.ResError(c, "Save Error", nil)
+	if err := biz.CreateDemo(ctx, &item); err != nil {
+		util.ResErrorWithMsg(c, "Save Error")
 		return
 	}
 
-	util.ResOk(c, "Save Success", nil)
+	util.ResOkWithMsg(c, "Save Success")
 }

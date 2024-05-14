@@ -8,13 +8,14 @@ import (
 	"os"
 )
 
-func InitLogger(config *config.Config) {
+func InitLogger() {
+	cfg := config.GetConfig()
 	// 设置日志格式。
 	log.SetFormatter(&log.TextFormatter{
 		FullTimestamp:   true,
 		TimestampFormat: "2006-01-02 15:04:05",
 	})
-	logConf := config.Logging
+	logConf := cfg.Logging
 	switch logConf.Level {
 	case "trace":
 		log.SetLevel(log.TraceLevel)
@@ -33,7 +34,7 @@ func InitLogger(config *config.Config) {
 	}
 	log.SetReportCaller(true) // 打印文件、行号和主调函数。
 
-	if config.AppMode == "dev" {
+	if cfg.AppMode == "dev" {
 		log.SetOutput(os.Stdout)
 	} else {
 		// 实现日志滚动。
