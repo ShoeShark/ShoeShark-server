@@ -1,10 +1,69 @@
 basePath: /shoe-shark
 definitions:
-  schema.DemoForm:
+  req.CreateContentReq:
+    properties:
+      accountAddress:
+        type: string
+      body:
+        type: string
+      isPublic:
+        type: boolean
+      location:
+        type: string
+      title:
+        type: string
+    required:
+    - accountAddress
+    - body
+    - title
+    type: object
+  req.UpdateContentReq:
+    properties:
+      accountAddress:
+        type: string
+      body:
+        type: string
+      contentId:
+        type: string
+      isPublic:
+        type: boolean
+      location:
+        type: string
+      title:
+        type: string
+    required:
+    - accountAddress
+    - body
+    - contentId
+    - title
+    type: object
+  res.ContentInfoRes:
+    properties:
+      accountAddress:
+        type: string
+      body:
+        type: string
+      contentID:
+        type: string
+      created_at:
+        type: string
+      isPublic:
+        type: boolean
+      location:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      userID:
+        type: string
+    type: object
+  util.Response:
     properties:
       code:
-        type: string
-      name:
+        type: integer
+      data: {}
+      msg:
         type: string
     type: object
 info:
@@ -13,22 +72,136 @@ info:
   title: shoe-shark-service API
   version: "1.0"
 paths:
-  /api/v1/demo/create:
+  /api/v1/content/{contentId}:
+    delete:
+      description: Delete a content by ContentID
+      parameters:
+      - description: schema.Content ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Delete a content
+      tags:
+      - contents
+    get:
+      description: Get a content by ID
+      parameters:
+      - description: schema.Content ContentID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.ContentInfoRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Get a content
+      tags:
+      - contents
+  /api/v1/content/edit:
     put:
       consumes:
       - application/json
-      description: add a new pet to the store
+      description: Update a content by ContentID
       parameters:
-      - description: DemoForm contains all necessary pet information
+      - description: Content to update
         in: body
-        name: demo
+        name: content
         required: true
         schema:
-          $ref: '#/definitions/schema.DemoForm'
+          $ref: '#/definitions/req.UpdateContentReq'
       produces:
       - application/json
-      responses: {}
-      summary: Add a new pet to the store
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Update a content
       tags:
-      - 测试
+      - contents
+  /api/v1/content/save:
+    post:
+      consumes:
+      - application/json
+      description: Create a new content
+      parameters:
+      - description: Content to create
+        in: body
+        name: content
+        required: true
+        schema:
+          $ref: '#/definitions/req.CreateContentReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Create a new content
+      tags:
+      - contents
 swagger: "2.0"

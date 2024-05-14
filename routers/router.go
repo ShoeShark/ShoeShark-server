@@ -36,9 +36,7 @@ func InitRouter() *gin.Engine {
 	}
 
 	r.Use(middleware.GinLoggerPrintConf())
-	//r.Use(gin.Recovery())
 
-	//a := r.Group("/shoe-shark")
 	ssr := r.Group("/shoe-shark")
 	mods.RegisterRouters(ssr)
 

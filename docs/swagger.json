@@ -8,9 +8,9 @@
     },
     "basePath": "/shoe-shark",
     "paths": {
-        "/api/v1/demo/create": {
+        "/api/v1/content/edit": {
             "put": {
-                "description": "add a new pet to the store",
+                "description": "Update a content by ContentID",
                 "consumes": [
                     "application/json"
                 ],
@@ -18,32 +18,324 @@
                     "application/json"
                 ],
                 "tags": [
-                    "测试"
+                    "contents"
                 ],
-                "summary": "Add a new pet to the store",
+                "summary": "Update a content",
                 "parameters": [
                     {
-                        "description": "DemoForm contains all necessary pet information",
-                        "name": "demo",
+                        "description": "Content to update",
+                        "name": "content",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/schema.DemoForm"
+                            "$ref": "#/definitions/req.UpdateContentReq"
                         }
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/content/save": {
+            "post": {
+                "description": "Create a new content",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contents"
+                ],
+                "summary": "Create a new content",
+                "parameters": [
+                    {
+                        "description": "Content to create",
+                        "name": "content",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/req.CreateContentReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/content/{contentId}": {
+            "get": {
+                "description": "Get a content by ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contents"
+                ],
+                "summary": "Get a content",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "schema.Content ContentID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/res.ContentInfoRes"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a content by ContentID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contents"
+                ],
+                "summary": "Delete a content",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "schema.Content ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
     "definitions": {
-        "schema.DemoForm": {
+        "req.CreateContentReq": {
+            "type": "object",
+            "required": [
+                "accountAddress",
+                "body",
+                "title"
+            ],
+            "properties": {
+                "accountAddress": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "isPublic": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "req.UpdateContentReq": {
+            "type": "object",
+            "required": [
+                "accountAddress",
+                "body",
+                "contentId",
+                "title"
+            ],
+            "properties": {
+                "accountAddress": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "contentId": {
+                    "type": "string"
+                },
+                "isPublic": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "res.ContentInfoRes": {
+            "type": "object",
+            "properties": {
+                "accountAddress": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "contentID": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "isPublic": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "userID": {
+                    "type": "string"
+                }
+            }
+        },
+        "util.Response": {
             "type": "object",
             "properties": {
                 "code": {
-                    "type": "string"
+                    "type": "integer"
                 },
-                "name": {
+                "data": {},
+                "msg": {
                     "type": "string"
                 }
             }
