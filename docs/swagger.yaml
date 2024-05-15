@@ -37,6 +37,16 @@ definitions:
     - contentId
     - title
     type: object
+  req.VerifySignatureReq:
+    properties:
+      accountAddress:
+        type: string
+      signature:
+        type: string
+    required:
+    - accountAddress
+    - signature
+    type: object
   res.ContentInfoRes:
     properties:
       accountAddress:
@@ -58,6 +68,16 @@ definitions:
       userID:
         type: string
     type: object
+  res.GetNonceRes:
+    properties:
+      nonce:
+        type: string
+    type: object
+  res.VerifySignatureRes:
+    properties:
+      token:
+        type: string
+    type: object
   util.Response:
     properties:
       code:
@@ -72,6 +92,67 @@ info:
   title: shoe-shark-service API
   version: "1.0"
 paths:
+  /api/v1/auth/nonce/{accountAddress}:
+    get:
+      consumes:
+      - application/json
+      description: Get Nonce By Account Address
+      parameters:
+      - description: Wallet Address
+        in: path
+        name: accountAddress
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.GetNonceRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Get Nonce
+      tags:
+      - auth
+  /api/v1/auth/nonce/verify:
+    post:
+      consumes:
+      - application/json
+      description: Verify the provided signature and return a JWT if valid
+      parameters:
+      - description: Content to verify
+        in: body
+        name: content
+        required: true
+        schema:
+          $ref: '#/definitions/req.VerifySignatureReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.VerifySignatureRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Verify Signature
+      tags:
+      - auth
   /api/v1/content/{contentId}:
     delete:
       description: Delete a content by ContentID
@@ -204,4 +285,31 @@ paths:
       summary: Create a new content
       tags:
       - contents
+  /api/v1/user:
+    get:
+      consumes:
+      - application/json
+      description: Get User  By AccountAddress
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      summary: Get User
+      tags:
+      - user
 swagger: "2.0"

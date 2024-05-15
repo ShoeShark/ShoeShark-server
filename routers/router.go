@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	_ "github.com/shoe-shark/shoe-shark-service/docs"
+	"github.com/shoe-shark/shoe-shark-service/middleware"
 	"github.com/shoe-shark/shoe-shark-service/mods"
-	"github.com/shoe-shark/shoe-shark-service/pkg/middleware"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

@@ -6,7 +6,6 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
 	"github.com/shoe-shark/shoe-shark-service/repository"
-	"time"
 )
 
 func CreateContent(ctx context.Context, req *req.CreateContentReq) error {
@@ -45,7 +44,7 @@ func DeleteContent(ctx context.Context, contentID string) error {
 }
 
 func UpdateContent(ctx context.Context, req *req.UpdateContentReq) error {
-	var content = schema.Content{
+	var updateContent = schema.Content{
 		Title:          req.Title,
 		Body:           req.Body,
 		AccountAddress: req.AccountAddress,
@@ -54,13 +53,12 @@ func UpdateContent(ctx context.Context, req *req.UpdateContentReq) error {
 	}
 
 	rp := repository.GetPGRepository()
-
+	var content schema.Content
 	if err := rp.Where("content_id = ?", req.ContentID).First(&content).Error; err != nil {
 		return err
 	}
 
-	content.UpdatedAt = time.Now()
-	if err := rp.SaveOne(&content); err != nil {
+	if err := rp.SaveOne(&updateContent); err != nil {
 		return err
 	}
 	return nil

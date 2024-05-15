@@ -1,16 +1,19 @@
 package schema
 
 import (
-	"github.com/google/uuid"
 	"time"
 )
 
 type User struct {
-	UserId         uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primary_key" json:"user_id"`
-	Username       string    `gorm:"type:varchar(255);unique;not null" json:"username"`
-	Email          string    `gorm:"type:varchar(255);unique;not null" json:"email"`
-	AccountAddress string    `gorm:"type:varchar(42);not null" json:"account_address"`
-	IsDelete       bool      `gorm:"default:false" json:"is_delete"`
-	CreatedAt      time.Time `gorm:"default:current_timestamp" json:"created_at"`
-	UpdatedAt      time.Time `gorm:"default:current_timestamp" json:"updated_at"`
+	AccountAddress string    `gorm:"type:varchar(42);not null;primary_key"`
+	Username       string    `gorm:"type:varchar(255);unique;not null"`
+	Email          string    `gorm:"type:varchar(255);unique;not null"`
+	Nonce          string    `gorm:"type:varchar(32);not null"`
+	IsDelete       bool      `gorm:"default:false"`
+	CreatedAt      time.Time `gorm:"default:current_timestamp"`
+	UpdatedAt      time.Time `gorm:"default:current_timestamp"`
+}
+
+func (User) TableName() string {
+	return "sst.sst_user"
 }
