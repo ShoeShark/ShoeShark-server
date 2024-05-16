@@ -119,6 +119,11 @@ const docTemplate = `{
         },
         "/api/v1/content/edit": {
             "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Update a content by ContentID",
                 "consumes": [
                     "application/json"
@@ -264,6 +269,11 @@ const docTemplate = `{
         },
         "/api/v1/content/save": {
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Create a new content",
                 "consumes": [
                     "application/json"
@@ -328,6 +338,11 @@ const docTemplate = `{
         },
         "/api/v1/content/{contentId}": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Get a content by ID",
                 "produces": [
                     "application/json"
@@ -373,6 +388,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Delete a content by ContentID",
                 "produces": [
                     "application/json"
@@ -432,6 +452,11 @@ const docTemplate = `{
         },
         "/api/v1/user": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "description": "Get User  By AccountAddress",
                 "consumes": [
                     "application/json"

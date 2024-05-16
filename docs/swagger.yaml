@@ -188,6 +188,8 @@ paths:
                 Msg:
                   type: string
               type: object
+      security:
+      - ApiKeyAuth: []
       summary: Delete a content
       tags:
       - contents
@@ -215,6 +217,8 @@ paths:
                 Msg:
                   type: string
               type: object
+      security:
+      - ApiKeyAuth: []
       summary: Get a content
       tags:
       - contents
@@ -251,6 +255,8 @@ paths:
                 Msg:
                   type: string
               type: object
+      security:
+      - ApiKeyAuth: []
       summary: Update a content
       tags:
       - contents
@@ -336,6 +342,8 @@ paths:
                 Msg:
                   type: string
               type: object
+      security:
+      - ApiKeyAuth: []
       summary: Create a new content
       tags:
       - contents
@@ -358,6 +366,8 @@ paths:
                 Msg:
                   type: string
               type: object
+      security:
+      - ApiKeyAuth: []
       summary: Get User
       tags:
       - user

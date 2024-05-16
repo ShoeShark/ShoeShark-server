@@ -5,6 +5,7 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/biz"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
+	"net/http"
 	"strconv"
 )
 
@@ -14,12 +15,20 @@ import (
 // @Tags contents
 // @Accept json
 // @Produce json
+// @Security ApiKeyAuth
 // @Param content body req.CreateContentReq true "Content to create"
 // @Success 200 {object} util.Response{Msg=string}
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/content/save [post]
 func CreateContent(c *gin.Context) {
 	var contentReq req.CreateContentReq
+
+	accountAddress, exists := c.Get("accountAddress")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
+	}
+
+	contentReq.AccountAddress = accountAddress.(string)
 
 	if err := c.ShouldBindJSON(&contentReq); err != nil {
 		util.ResErrorWithMsg(c, "Serialize Body Error")
@@ -40,6 +49,7 @@ func CreateContent(c *gin.Context) {
 // @Description Delete a content by ContentID
 // @Tags contents
 // @Produce json
+// @Security ApiKeyAuth
 // @Param id path string true "schema.Content ID"
 // @Success 200 {object} util.Response{Msg=string}
 // @Failure 500 {object} util.Response{Msg=string}
@@ -62,6 +72,7 @@ func DeleteContent(c *gin.Context) {
 // @Tags contents
 // @Accept json
 // @Produce json
+// @Security ApiKeyAuth
 // @Param content body req.UpdateContentReq true "Content to update"
 // @Success 200 {object} util.Response{Msg=string}
 // @Failure 500 {object} util.Response{Msg=string}
@@ -87,6 +98,7 @@ func UpdateContent(c *gin.Context) {
 // @Description Get a content by ID
 // @Tags contents
 // @Produce json
+// @Security ApiKeyAuth
 // @Param id path string true "schema.Content ContentID"
 // @Success 200 {object} res.ContentInfoRes
 // @Failure 500 {object} util.Response{Msg=string}
