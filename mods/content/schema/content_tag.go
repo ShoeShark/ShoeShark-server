@@ -7,6 +7,6 @@ type ContentTag struct {
 	TagID     int       `gorm:"not null" json:"tag_id"`
 }
 
-func (a *ContentTag) TableName() string {
+func (a *ContentTag) TableNameAble() string {
 	return "sst.sst_content_tags"
 }

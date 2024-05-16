@@ -14,4 +14,5 @@ func RegisterV1Routers(router *gin.RouterGroup) {
 	r.DELETE("/:contentId", api.DeleteContent)
 	r.GET("/:contentId", api.GetContent)
 	r.PUT("/edit", api.UpdateContent)
+	r.GET("/list", api.ListContent)
 }

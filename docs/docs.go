@@ -181,6 +181,87 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/content/list": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a list of contents with pagination and filtering",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contents"
+                ],
+                "summary": "List contents",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Title filter",
+                        "name": "title",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Description filter",
+                        "name": "description",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Account Address filter",
+                        "name": "account_address",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Page number",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Page size",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/res.ContentInfoRes"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/content/save": {
             "post": {
                 "description": "Create a new content",
@@ -363,19 +444,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/util.Response"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "Msg": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            ]
+                            "$ref": "#/definitions/res.UserInfoRes"
                         }
                     },
                     "500": {
@@ -405,14 +474,14 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "accountAddress",
-                "body",
+                "description",
                 "title"
             ],
             "properties": {
                 "accountAddress": {
                     "type": "string"
                 },
-                "body": {
+                "description": {
                     "type": "string"
                 },
                 "isPublic": {
@@ -430,18 +499,18 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "accountAddress",
-                "body",
                 "contentId",
+                "description",
                 "title"
             ],
             "properties": {
                 "accountAddress": {
                     "type": "string"
                 },
-                "body": {
+                "contentId": {
                     "type": "string"
                 },
-                "contentId": {
+                "description": {
                     "type": "string"
                 },
                 "isPublic": {
@@ -476,13 +545,13 @@ const docTemplate = `{
                 "accountAddress": {
                     "type": "string"
                 },
-                "body": {
-                    "type": "string"
-                },
                 "contentID": {
                     "type": "string"
                 },
                 "created_at": {
+                    "type": "string"
+                },
+                "description": {
                     "type": "string"
                 },
                 "isPublic": {
@@ -493,12 +562,6 @@ const docTemplate = `{
                 },
                 "title": {
                     "type": "string"
-                },
-                "updated_at": {
-                    "type": "string"
-                },
-                "userID": {
-                    "type": "string"
                 }
             }
         },
@@ -506,6 +569,20 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "nonce": {
+                    "type": "string"
+                }
+            }
+        },
+        "res.UserInfoRes": {
+            "type": "object",
+            "properties": {
+                "accountAddress": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "username": {
                     "type": "string"
                 }
             }
@@ -529,6 +606,13 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`

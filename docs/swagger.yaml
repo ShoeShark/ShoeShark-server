@@ -4,7 +4,7 @@ definitions:
     properties:
       accountAddress:
         type: string
-      body:
+      description:
         type: string
       isPublic:
         type: boolean
@@ -14,16 +14,16 @@ definitions:
         type: string
     required:
     - accountAddress
-    - body
+    - description
     - title
     type: object
   req.UpdateContentReq:
     properties:
       accountAddress:
         type: string
-      body:
-        type: string
       contentId:
+        type: string
+      description:
         type: string
       isPublic:
         type: boolean
@@ -33,8 +33,8 @@ definitions:
         type: string
     required:
     - accountAddress
-    - body
     - contentId
+    - description
     - title
     type: object
   req.VerifySignatureReq:
@@ -51,11 +51,11 @@ definitions:
     properties:
       accountAddress:
         type: string
-      body:
-        type: string
       contentID:
         type: string
       created_at:
+        type: string
+      description:
         type: string
       isPublic:
         type: boolean
@@ -63,14 +63,19 @@ definitions:
         type: string
       title:
         type: string
-      updated_at:
-        type: string
-      userID:
-        type: string
     type: object
   res.GetNonceRes:
     properties:
       nonce:
+        type: string
+    type: object
+  res.UserInfoRes:
+    properties:
+      accountAddress:
+        type: string
+      email:
+        type: string
+      username:
         type: string
     type: object
   res.VerifySignatureRes:
@@ -249,6 +254,55 @@ paths:
       summary: Update a content
       tags:
       - contents
+  /api/v1/content/list:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of contents with pagination and filtering
+      parameters:
+      - description: Title filter
+        in: query
+        name: title
+        type: string
+      - description: Description filter
+        in: query
+        name: description
+        type: string
+      - description: Account Address filter
+        in: query
+        name: account_address
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Page size
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/res.ContentInfoRes'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List contents
+      tags:
+      - contents
   /api/v1/content/save:
     post:
       consumes:
@@ -294,12 +348,7 @@ paths:
         "200":
           description: OK
           schema:
-            allOf:
-            - $ref: '#/definitions/util.Response'
-            - properties:
-                Msg:
-                  type: string
-              type: object
+            $ref: '#/definitions/res.UserInfoRes'
         "500":
           description: Internal Server Error
           schema:
@@ -312,4 +361,9 @@ paths:
       summary: Get User
       tags:
       - user
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

@@ -11,7 +11,7 @@ import (
 // @Description Get User  By AccountAddress
 // @Tags user
 // @Accept json
-// @Success 200 {object} util.Response{Msg=string}
+// @Success 200 {object} res.UserInfoRes
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/user [get]
 func GetUserByAccountAddress(c *gin.Context) {
@@ -21,6 +21,10 @@ func GetUserByAccountAddress(c *gin.Context) {
 	if err != nil {
 		util.ResErrorWithMsg(c, err.Error())
 		return
+	}
+
+	if user == nil {
+		util.ResErrorWithMsg(c, "user not found")
 	}
 
 	util.ResOkWithData(c, user)

@@ -24,7 +24,7 @@ func TestGenerateAndVerifySignature(t *testing.T) {
 	fmt.Println("accountAddress:", accountAddress)
 
 	// 生成签名
-	nonce := "2997e5a278f560fb96dc909cc69da834"
+	nonce := "dc408761e0b19a813bd3bbf9f3e15ba0"
 
 	signature, err := GenerateSignature(privateKey, nonce)
 	fmt.Println("signature:", hex.EncodeToString(signature))

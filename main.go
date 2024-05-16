@@ -2,6 +2,9 @@
 // @description shoe-shark-service API
 // @version 1.0
 // @BasePath /shoe-shark
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 
 package main
 

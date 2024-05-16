@@ -7,12 +7,10 @@ import (
 
 type ContentInfoRes struct {
 	ContentID      uuid.UUID `json:"contentID"`
-	UID            uuid.UUID `json:"userID"`
 	Title          string    `json:"title"`
-	Body           string    `json:"body"`
+	Description    string    `json:"description"`
 	AccountAddress string    `json:"accountAddress"`
 	Location       string    `json:"location"`
 	IsPublic       bool      `json:"isPublic"`
 	CreatedAt      time.Time `json:"created_at"`
-	UpdatedAt      time.Time `json:"updated_at"`
 }

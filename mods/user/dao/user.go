@@ -30,9 +30,13 @@ func UpdateNonceByAccountAddress(rp *db.Repository, accountAddress string, nonce
 
 func GetByAccountAddress(rp *db.Repository, accountAddress string) (*schema.User, error) {
 	user := schema.User{}
-	err := rp.Where("account_address = ?", accountAddress).Select([]string{"nonce"}).First(&user).Error
+
+	found, err := rp.GetOne(&user, "account_address = ?", accountAddress)
 	if err != nil {
 		return nil, err
+	}
+	if !found {
+		return nil, nil
 	}
 
 	return &user, nil

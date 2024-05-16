@@ -5,6 +5,7 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/biz"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
+	"strconv"
 )
 
 // CreateContent godoc
@@ -98,4 +99,53 @@ func GetContent(c *gin.Context) {
 		return
 	}
 	util.ResOkWithData(c, content)
+}
+
+// ListContent godoc
+// @Summary List contents
+// @Description Get a list of contents with pagination and filtering
+// @Tags contents
+// @Accept  json
+// @Produce  json
+// @Security ApiKeyAuth
+// @Param title query string false "Title filter"
+// @Param description query string false "Description filter"
+// @Param account_address query string false "Account Address filter"
+// @Param page query int false "Page number"
+// @Param page_size query int false "Page size"
+// @Success 200 {object} []res.ContentInfoRes
+// @Failure 500 {object} util.Response{Msg=string}
+// @Router /api/v1/content/list [get]
+func ListContent(c *gin.Context) {
+	title := c.Query("title")
+	description := c.Query("description")
+	accountAddress := c.Query("account_address")
+	pageStr := c.Query("page")
+	sizeStr := c.Query("page_size")
+
+	page, err := strconv.Atoi(pageStr)
+	if err != nil || page < 1 {
+		page = 1
+	}
+
+	size, err := strconv.Atoi(sizeStr)
+	if err != nil || size < 1 {
+		size = 10
+	}
+
+	var contentReq = req.QueryContentReq{
+		Title:          title,
+		Description:    description,
+		AccountAddress: accountAddress,
+		Page:           page,
+		Size:           size,
+	}
+
+	pageData, err := biz.ListContent(&contentReq)
+	if err != nil {
+		util.ResErrorWithMsg(c, err.Error())
+		return
+	}
+
+	util.ResOkWithData(c, pageData)
 }
