@@ -14,10 +14,6 @@ type User struct {
 	UpdatedAt      time.Time `gorm:"default:current_timestamp"`
 }
 
-func (u *User) TableNameAble() string {
-	return u.TableName()
-}
-
 func (User) TableName() string {
 	return "sst.sst_user"
 }
