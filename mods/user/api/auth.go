@@ -8,6 +8,27 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 )
 
+// Test godoc
+// @Summary Get Nonce
+// @Description Get Nonce By Account Address
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param accountAddress path string true "Wallet Address"
+// @Success 200 {object} res.GetNonceRes
+// @Failure 500 {object} util.Response{Msg=string}
+// @Router /api/v1/auth/test/{accountAddress} [get]
+func Test(c *gin.Context) {
+	accountAddress := c.Param("accountAddress")
+	nonce, err := biz.GetNonce(accountAddress)
+	if err != nil {
+		util.ResErrorWithMsg(c, err.Error())
+		return
+	}
+
+	util.ResOkWithData(c, &res.GetNonceRes{Nonce: nonce})
+}
+
 // GetNonce godoc
 // @Summary Get Nonce
 // @Description Get Nonce By Account Address
