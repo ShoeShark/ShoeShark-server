@@ -27,6 +27,7 @@ WORKDIR /root/
 
 # 复制编译后的程序
 COPY --from=builder /app/main .
+COPY --from=builder /app/resources ./resources
 
 # 暴露端口（根据你的程序的需求来调整）
 EXPOSE 8080
