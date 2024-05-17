@@ -5,13 +5,13 @@ FROM golang:1.22-alpine AS builder
 WORKDIR /app
 
 # 复制项目的 go.mod 和 go.sum 文件
-COPY ../../go.mod ../../go.sum ./
+COPY go.mod go.sum ./
 
 # 下载依赖
 RUN go mod download
 
 # 复制项目的源代码
-COPY ../../ .
+COPY . .
 
 # 编译 Go 程序
 RUN go build -o main .
