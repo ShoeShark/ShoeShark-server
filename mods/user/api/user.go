@@ -17,7 +17,7 @@ import (
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/user [get]
 func GetUserByAccountAddress(c *gin.Context) {
-	newCtx := middleware.GenContextWithClaims(c)
+	newCtx := middleware.GenContextWithInformation(c)
 
 	user, err := biz.GetUserByAccountAddress(&newCtx)
 	if err != nil {

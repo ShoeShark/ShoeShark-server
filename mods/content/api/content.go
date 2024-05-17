@@ -28,7 +28,7 @@ func CreateContent(c *gin.Context) {
 		return
 	}
 
-	newCtx := middleware.GenContextWithClaims(c)
+	newCtx := middleware.GenContextWithInformation(c)
 
 	err := biz.CreateContent(&newCtx, &contentReq)
 	if err != nil {
@@ -52,7 +52,7 @@ func CreateContent(c *gin.Context) {
 func DeleteContent(c *gin.Context) {
 	contentID := c.Param("contentId")
 
-	newCtx := middleware.GenContextWithClaims(c)
+	newCtx := middleware.GenContextWithInformation(c)
 
 	err := biz.DeleteContent(&newCtx, contentID)
 	if err != nil {
@@ -82,9 +82,9 @@ func UpdateContent(c *gin.Context) {
 		return
 	}
 
-	ctx := middleware.GenContextWithClaims(c)
+	newCtx := middleware.GenContextWithInformation(c)
 
-	err := biz.UpdateContent(&ctx, &contentReq)
+	err := biz.UpdateContent(&newCtx, &contentReq)
 	if err != nil {
 		util.ResErrorWithMsg(c, "Update Content Error: "+err.Error())
 		return
@@ -105,7 +105,7 @@ func UpdateContent(c *gin.Context) {
 func GetContent(c *gin.Context) {
 	contentID := c.Param("contentId")
 
-	newCtx := middleware.GenContextWithClaims(c)
+	newCtx := middleware.GenContextWithInformation(c)
 
 	content, err := biz.GetContent(&newCtx, contentID)
 	if err != nil {

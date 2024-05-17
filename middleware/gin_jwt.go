@@ -40,6 +40,6 @@ func ExtractAccountAddress(c *gin.Context) string {
 	return c.GetString("accountAddress")
 }
 
-func GenContextWithClaims(c *gin.Context) context.Context {
+func GenContextWithInformation(c *gin.Context) context.Context {
 	return context.WithValue(c.Request.Context(), "accountAddress", ExtractAccountAddress(c))
 }
