@@ -354,8 +354,8 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "schema.Content ContentID",
-                        "name": "id",
+                        "description": "Content ID",
+                        "name": "contentId",
                         "in": "path",
                         "required": true
                     }
@@ -404,8 +404,8 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "schema.Content ID",
-                        "name": "id",
+                        "description": "Content ID",
+                        "name": "contentId",
                         "in": "path",
                         "required": true
                     }
@@ -498,14 +498,10 @@ const docTemplate = `{
         "req.CreateContentReq": {
             "type": "object",
             "required": [
-                "accountAddress",
                 "description",
                 "title"
             ],
             "properties": {
-                "accountAddress": {
-                    "type": "string"
-                },
                 "description": {
                     "type": "string"
                 },
@@ -523,15 +519,11 @@ const docTemplate = `{
         "req.UpdateContentReq": {
             "type": "object",
             "required": [
-                "accountAddress",
                 "contentId",
                 "description",
                 "title"
             ],
             "properties": {
-                "accountAddress": {
-                    "type": "string"
-                },
                 "contentId": {
                     "type": "string"
                 },

@@ -2,10 +2,10 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/shoe-shark/shoe-shark-service/middleware"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/biz"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
-	"net/http"
 	"strconv"
 )
 
@@ -23,19 +23,14 @@ import (
 func CreateContent(c *gin.Context) {
 	var contentReq req.CreateContentReq
 
-	accountAddress, exists := c.Get("accountAddress")
-	if !exists {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
-	}
-
-	contentReq.AccountAddress = accountAddress.(string)
-
-	if err := c.ShouldBindJSON(&contentReq); err != nil {
+	if err := c.BindJSON(&contentReq); err != nil {
 		util.ResErrorWithMsg(c, "Serialize Body Error")
 		return
 	}
 
-	err := biz.CreateContent(c.Request.Context(), &contentReq)
+	newCtx := middleware.GenContextWithClaims(c)
+
+	err := biz.CreateContent(&newCtx, &contentReq)
 	if err != nil {
 		util.ResErrorWithMsg(c, "Save Error")
 		return
@@ -50,14 +45,16 @@ func CreateContent(c *gin.Context) {
 // @Tags contents
 // @Produce json
 // @Security ApiKeyAuth
-// @Param id path string true "schema.Content ID"
+// @Param contentId path string true "Content ID"
 // @Success 200 {object} util.Response{Msg=string}
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/content/{contentId} [delete]
 func DeleteContent(c *gin.Context) {
 	contentID := c.Param("contentId")
 
-	err := biz.DeleteContent(c.Request.Context(), contentID)
+	newCtx := middleware.GenContextWithClaims(c)
+
+	err := biz.DeleteContent(&newCtx, contentID)
 	if err != nil {
 		util.ResErrorWithMsg(c, "Delete Content Error")
 		return
@@ -80,14 +77,16 @@ func DeleteContent(c *gin.Context) {
 func UpdateContent(c *gin.Context) {
 	var contentReq req.UpdateContentReq
 
-	if err := c.ShouldBindJSON(&contentReq); err != nil {
-		util.ResErrorWithMsg(c, "Serialize Body Error")
+	if err := c.BindJSON(&contentReq); err != nil {
+		util.ResErrorWithMsg(c, "Serialize Body Error: "+err.Error())
 		return
 	}
 
-	err := biz.UpdateContent(c.Request.Context(), &contentReq)
+	ctx := middleware.GenContextWithClaims(c)
+
+	err := biz.UpdateContent(&ctx, &contentReq)
 	if err != nil {
-		util.ResErrorWithMsg(c, "Update Content Error")
+		util.ResErrorWithMsg(c, "Update Content Error: "+err.Error())
 		return
 	}
 	util.ResOk(c)
@@ -99,13 +98,16 @@ func UpdateContent(c *gin.Context) {
 // @Tags contents
 // @Produce json
 // @Security ApiKeyAuth
-// @Param id path string true "schema.Content ContentID"
+// @Param contentId path string true "Content ID"
 // @Success 200 {object} res.ContentInfoRes
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/content/{contentId} [get]
 func GetContent(c *gin.Context) {
 	contentID := c.Param("contentId")
-	content, err := biz.GetContent(c.Request.Context(), contentID)
+
+	newCtx := middleware.GenContextWithClaims(c)
+
+	content, err := biz.GetContent(&newCtx, contentID)
 	if err != nil {
 		util.ResErrorWithMsg(c, "Content not found")
 		return

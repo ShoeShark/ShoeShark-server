@@ -2,8 +2,6 @@ basePath: /shoe-shark
 definitions:
   req.CreateContentReq:
     properties:
-      accountAddress:
-        type: string
       description:
         type: string
       isPublic:
@@ -13,14 +11,11 @@ definitions:
       title:
         type: string
     required:
-    - accountAddress
     - description
     - title
     type: object
   req.UpdateContentReq:
     properties:
-      accountAddress:
-        type: string
       contentId:
         type: string
       description:
@@ -32,7 +27,6 @@ definitions:
       title:
         type: string
     required:
-    - accountAddress
     - contentId
     - description
     - title
@@ -162,9 +156,9 @@ paths:
     delete:
       description: Delete a content by ContentID
       parameters:
-      - description: schema.Content ID
+      - description: Content ID
         in: path
-        name: id
+        name: contentId
         required: true
         type: string
       produces:
@@ -196,9 +190,9 @@ paths:
     get:
       description: Get a content by ID
       parameters:
-      - description: schema.Content ContentID
+      - description: Content ID
         in: path
-        name: id
+        name: contentId
         required: true
         type: string
       produces:

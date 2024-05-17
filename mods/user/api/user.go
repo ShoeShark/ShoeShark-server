@@ -2,9 +2,9 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/shoe-shark/shoe-shark-service/middleware"
 	"github.com/shoe-shark/shoe-shark-service/mods/user/biz"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
-	"net/http"
 )
 
 // GetUserByAccountAddress godoc
@@ -17,12 +17,9 @@ import (
 // @Failure 500 {object} util.Response{Msg=string}
 // @Router /api/v1/user [get]
 func GetUserByAccountAddress(c *gin.Context) {
-	accountAddress, exists := c.Get("accountAddress")
-	if !exists {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
-	}
+	newCtx := middleware.GenContextWithClaims(c)
 
-	user, err := biz.GetUserByAccountAddress(accountAddress.(string))
+	user, err := biz.GetUserByAccountAddress(&newCtx)
 	if err != nil {
 		util.ResErrorWithMsg(c, err.Error())
 		return

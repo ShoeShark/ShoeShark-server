@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+	"errors"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
@@ -10,13 +11,14 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 )
 
-func CreateContent(ctx context.Context, req *req.CreateContentReq) error {
+func CreateContent(ctx *context.Context, req *req.CreateContentReq) error {
+	accountAddress := (*ctx).Value("accountAddress").(string)
 	content := schema.Content{
 		Title:          req.Title,
 		Description:    req.Description,
-		AccountAddress: req.AccountAddress,
 		Location:       req.Location,
 		IsPublic:       req.IsPublic,
+		AccountAddress: accountAddress,
 	}
 
 	rp := repository.GetPGRepository()
@@ -27,13 +29,20 @@ func CreateContent(ctx context.Context, req *req.CreateContentReq) error {
 	return nil
 }
 
-func DeleteContent(ctx context.Context, contentID string) error {
+func DeleteContent(ctx *context.Context, contentID string) error {
+	accountAddress := (*ctx).Value("accountAddress").(string)
+
 	rp := repository.GetPGRepository()
 
 	var content schema.Content
 	if err := rp.Where("content_id = ?", contentID).First(&content).Error; err != nil {
 		return err
 	}
+
+	if content.AccountAddress != accountAddress {
+		return errors.New("not authorized to delete this content")
+	}
+
 	content.IsDelete = true
 	if err := rp.Save(&content).Error; err != nil {
 		return err
@@ -41,19 +50,26 @@ func DeleteContent(ctx context.Context, contentID string) error {
 	return nil
 }
 
-func UpdateContent(ctx context.Context, req *req.UpdateContentReq) error {
-	var updateContent = schema.Content{
-		Title:          req.Title,
-		Description:    req.Description,
-		AccountAddress: req.AccountAddress,
-		Location:       req.Location,
-		IsPublic:       req.IsPublic,
-	}
+func UpdateContent(ctx *context.Context, req *req.UpdateContentReq) error {
+	accountAddress := (*ctx).Value("accountAddress").(string)
 
 	rp := repository.GetPGRepository()
 	var content schema.Content
 	if err := rp.Where("content_id = ?", req.ContentID).First(&content).Error; err != nil {
 		return err
+	}
+
+	if content.AccountAddress != accountAddress {
+		return errors.New("not authorized to update this content")
+	}
+
+	var updateContent = schema.Content{
+		Title:          req.Title,
+		Description:    req.Description,
+		AccountAddress: accountAddress,
+		Location:       req.Location,
+		IsPublic:       req.IsPublic,
+		ContentID:      content.ContentID,
 	}
 
 	if err := rp.SaveOne(&updateContent); err != nil {
@@ -62,7 +78,7 @@ func UpdateContent(ctx context.Context, req *req.UpdateContentReq) error {
 	return nil
 }
 
-func GetContent(ctx context.Context, contentID string) (*schema.Content, error) {
+func GetContent(ctx *context.Context, contentID string) (*schema.Content, error) {
 	rp := repository.GetPGRepository()
 	var content schema.Content
 	if err := rp.Where("content_id = ? AND is_delete = FALSE", contentID).First(&content).Error; err != nil {

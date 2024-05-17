@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"net/http"
@@ -33,4 +34,12 @@ func AuthMiddleware() gin.HandlerFunc {
 		c.Set("accountAddress", address)
 		c.Next()
 	}
+}
+
+func ExtractAccountAddress(c *gin.Context) string {
+	return c.GetString("accountAddress")
+}
+
+func GenContextWithClaims(c *gin.Context) context.Context {
+	return context.WithValue(c.Request.Context(), "accountAddress", ExtractAccountAddress(c))
 }
