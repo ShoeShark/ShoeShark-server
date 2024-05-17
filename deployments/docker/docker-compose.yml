@@ -4,5 +4,6 @@ services:
     build:
       context: ../..  # 项目根目录作为构建上下文
       dockerfile: deployments/docker/Dockerfile  # 指定 Dockerfile 的路径
+    image: shoe-shark-server:latest  # 指定镜像名称和标签
     ports:
       - "8080:8080"
