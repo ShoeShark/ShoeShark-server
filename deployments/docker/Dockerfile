@@ -1,6 +1,9 @@
 # 使用官方 Go 镜像作为构建阶段的基础镜像
 FROM golang:1.22-alpine AS builder
 
+# 设置 Go 模块代理
+ENV GOPROXY=https://goproxy.cn,direct
+
 # 设置工作目录
 WORKDIR /app
 
