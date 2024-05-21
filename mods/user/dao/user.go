@@ -14,7 +14,7 @@ func GetNonceByAccountAddress(rp *db.Repository, accountAddress string) (string,
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return "", nil
 		}
-		return "nil", err
+		return "", err
 	}
 
 	return user.Nonce, nil
