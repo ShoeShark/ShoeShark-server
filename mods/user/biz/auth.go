@@ -35,12 +35,6 @@ func GetNonce(accountAddress string) (string, error) {
 		}
 
 		return generateNonce, nil
-	} else {
-		// 更新nonce
-		err = generateNonceAndUpdate(rp, accountAddress)
-		if err != nil {
-			return "", err
-		}
 	}
 
 	return nonce, nil

@@ -36,10 +36,10 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 }
 
-func ExtractAccountAddress(c *gin.Context) string {
-	return c.GetString("accountAddress")
-}
-
 func GenContextWithInformation(c *gin.Context) context.Context {
-	return context.WithValue(c.Request.Context(), "accountAddress", ExtractAccountAddress(c))
+	accountAddress := c.GetString("accountAddress")
+
+	valueCtx := context.WithValue(c.Request.Context(), "accountAddress", accountAddress)
+
+	return valueCtx
 }
