@@ -22,12 +22,16 @@ RUN go build -o main .
 # 使用一个更小的基础镜像来运行编译后的程序
 FROM alpine:latest
 
+# 安装 bash
+RUN apk add --no-cache bash
+
 # 设置工作目录
 WORKDIR /root/
 
 # 复制编译后的程序
 COPY --from=builder /app/main .
 COPY --from=builder /app/resources ./resources
+COPY --from=builder /app/resources/static ./resources/static
 
 # 暴露端口（根据你的程序的需求来调整）
 EXPOSE 8080

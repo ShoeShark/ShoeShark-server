@@ -10,3 +10,6 @@ services:
       - "8080:8080"
     volumes:
       - ../../resources:/app/resources  # 挂载资源文件
+      - ../../resources/static:/app/resources/static  # 挂载资源文件
+    environment:
+      - GIN_MODE=release
