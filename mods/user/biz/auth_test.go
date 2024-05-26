@@ -10,7 +10,7 @@ import (
 )
 
 func TestGenerateAndVerifySignature(t *testing.T) {
-	privateKeyHex := "9da92c0d923d1c14b2c2e5699d4c0d840799d8e37bbc42ecedfef1b6dafcd84f"
+	privateKeyHex := "57ecc1d002c1fff33077b1ab5ac2900a21a35bc0493b22adc9003967080bb245"
 
 	// 将十六进制字符串转换为私钥对象
 	privateKey, err := crypto.HexToECDSA(privateKeyHex)

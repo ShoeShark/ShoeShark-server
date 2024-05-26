@@ -365,6 +365,35 @@ paths:
       summary: mint nft
       tags:
       - contract_nft
+  /api/v1/oss/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 上传图片并根据内容计算哈希值存储
+      parameters:
+      - description: 要上传的图片文件
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: 文件上传成功的哈希值
+          schema:
+            type: string
+        "400":
+          description: 获取表单错误
+          schema:
+            type: string
+        "500":
+          description: 服务器错误
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: 上传图片
   /api/v1/user:
     get:
       consumes:

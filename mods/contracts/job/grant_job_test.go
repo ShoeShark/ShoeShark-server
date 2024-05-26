@@ -6,7 +6,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/config"
@@ -57,7 +56,7 @@ func TestSetRoot(t *testing.T) {
 	client := eth.GetClient()
 	privateKey := eth.GetPrivateKey()
 
-	nftBiz, err := abi_repository.NewShoeSharkNftRepository(client, "0xf066e1108F253BA66214e1351fdc828D167076B6", privateKey)
+	nftBiz, err := abi_repository.NewShoeSharkNftRepository(client, "0x87f949c651338d1c8561f29dabef90f8dfb3dfda", privateKey)
 	if err != nil {
 		panic(err)
 	}
@@ -80,21 +79,32 @@ func TestSetRoot(t *testing.T) {
 	//	panic(err)
 	//}
 
-	proof, _ := eth.BuildMerkleProof("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E", accounts)
+	//proof, _ := eth.BuildMerkleProof("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E", accounts)
+	//
+	//for _, p := range proof {
+	//	fmt.Println("Proof part: 0x", hex.EncodeToString(p[:]))
+	//}
+	//
+	//err = nftBiz.MintWhitelist(common.HexToAddress("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E"), proof)
+	//if err != nil {
+	//	panic(err)
+	//}
 
-	for _, p := range proof {
-		fmt.Println("Proof part: 0x", hex.EncodeToString(p[:]))
-	}
+	//minted, err := nftBiz.Contract.SHasMinted(&bind.CallOpts{}, common.HexToAddress("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E"))
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//fmt.Println("minted: ", minted)
+	//
+	//sRoot, err := nftBiz.Contract.SRoot(&bind.CallOpts{})
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//fmt.Println("sRoot: ", hex.EncodeToString(sRoot[:]))
 
-	err = nftBiz.MintWhitelist(common.HexToAddress("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E"), proof)
+	owner, err := nftBiz.Contract.GetOwner(&bind.CallOpts{})
 	if err != nil {
 		panic(err)
 	}
-
-	minted, err := nftBiz.Contract.SHasMinted(&bind.CallOpts{}, common.HexToAddress("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	fmt.Println("minted: ", minted)
-
+	fmt.Println("owner:", owner.Hex())
 }

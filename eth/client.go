@@ -18,13 +18,13 @@ var (
 
 func InitClient(cfg *config.Config) {
 	var err error
-	clientInstance, err = ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
-	//clientInstance, err = ethclient.DialContext(context.Background(), "https://avalanche-fuji.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
+	//clientInstance, err = ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
+	clientInstance, err = ethclient.DialContext(context.Background(), "https://avalanche-fuji.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
 	if err != nil {
 		panic(fmt.Sprintf("Failed to connect to the Ethereum client: %v", err))
 	}
 
-	privateKey, err = crypto.HexToECDSA("7111ec7d38f35eaa460c85991cd269ee4f39f567ffb587d4e6aa474b38dccb7e")
+	privateKey, err = crypto.HexToECDSA("57ecc1d002c1fff33077b1ab5ac2900a21a35bc0493b22adc9003967080bb245")
 	if err != nil {
 		panic(fmt.Sprintf("Failed to  init privateKey: %v", err))
 	}

@@ -42,6 +42,8 @@ func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
 		return err
 	}
 
+	log.Info("txHash: ", transaction.Hash().Hex())
+
 	log.Info("Set Root transaction", transaction)
 
 	return nil

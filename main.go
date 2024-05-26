@@ -17,6 +17,8 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/routers"
 	log "github.com/sirupsen/logrus"
+	"os"
+	"path/filepath"
 )
 
 func main() {
@@ -34,9 +36,19 @@ func main() {
 	repository.Init()
 	eth.InitClient(cfg)
 
-	router := routers.InitRouter()
+	//获取当前工作目录
+	cwd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// 构建资源目录的绝对路径
+	resourcesDir := filepath.Join(cwd, "/resources/static")
+	cfg.ResourceDir = resourcesDir
 
-	err := router.Run(fmt.Sprintf("%s%d", ":", cfg.Server.Port))
+	router := routers.InitRouter()
+	//router.Static("/static", resourcesDir)
+
+	err = router.Run(fmt.Sprintf("%s%d", ":", cfg.Server.Port))
 	if err != nil {
 		log.Fatal(err)
 	}
