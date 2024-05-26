@@ -500,7 +500,7 @@ const docTemplate = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "上传图片并根据内容计算哈希值存储",
+                "description": "上传图片",
                 "consumes": [
                     "multipart/form-data"
                 ],

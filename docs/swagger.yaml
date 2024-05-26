@@ -369,7 +369,7 @@ paths:
     post:
       consumes:
       - multipart/form-data
-      description: 上传图片并根据内容计算哈希值存储
+      description: 上传图片
       parameters:
       - description: 要上传的图片文件
         in: formData
