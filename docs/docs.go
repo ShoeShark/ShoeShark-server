@@ -450,7 +450,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/contract/mint/white": {
+        "/api/v1/contract/nft/mint/white": {
             "get": {
                 "security": [
                     {
@@ -506,6 +506,9 @@ const docTemplate = `{
                 ],
                 "produces": [
                     "text/plain"
+                ],
+                "tags": [
+                    "上传"
                 ],
                 "summary": "上传图片",
                 "parameters": [

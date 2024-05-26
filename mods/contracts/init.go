@@ -8,7 +8,7 @@ import (
 
 func RegisterV1Routers(router *gin.RouterGroup) {
 
-	authRouter := router.Group("/contract")
+	authRouter := router.Group("/contract/nft")
 	authRouter.Use(middleware.AuthMiddleware())
 	{
 		authRouter.GET("/mint/white", api.MintWhiteList)

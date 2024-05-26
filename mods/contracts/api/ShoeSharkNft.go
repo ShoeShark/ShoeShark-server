@@ -15,7 +15,7 @@ import (
 // @Security ApiKeyAuth
 // @Success 200 {object} res.ContentInfoRes
 // @Failure 500 {object} util.Response{Msg=string}
-// @Router /api/v1/contract/mint/white [get]
+// @Router /api/v1/contract/nft/mint/white [get]
 func MintWhiteList(c *gin.Context) {
 	newCtx := middleware.GenContextWithInformation(c)
 

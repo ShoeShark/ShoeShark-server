@@ -341,7 +341,7 @@ paths:
       summary: Create a new content
       tags:
       - contents
-  /api/v1/contract/mint/white:
+  /api/v1/contract/nft/mint/white:
     get:
       description: mint nft , this mint must in white list
       produces:
@@ -394,6 +394,8 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: 上传图片
+      tags:
+      - 上传
   /api/v1/user:
     get:
       consumes:
