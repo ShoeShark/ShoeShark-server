@@ -77,14 +77,14 @@ func TestSetMerkleRoot(t *testing.T) {
 	var nftRp = &ShoeSharkNftRepository{
 		client:     client,
 		privateKey: privateKey,
-		contract:   nftContract,
+		Contract:   nftContract,
 	}
 
 	accounts := make([]string, 0)
 	accounts = append(accounts, "0xc44cE209A984135B8C34b1B8408C43e2FDbB282E")
 	accounts = append(accounts, "0x15Bb92E888cFF5ab5b557D4E75cE01eAEE1a9caA")
 
-	root, _ := eth.BuildMerkleTree(accounts)
+	root, _, _ := eth.BuildMerkleTree(accounts)
 
 	err = nftRp.SetMerkleRoot(root)
 	if err != nil {
@@ -97,7 +97,7 @@ func TestGenSetMerkleRoot(t *testing.T) {
 	accounts = append(accounts, "0xc44cE209A984135B8C34b1B8408C43e2FDbB282E")
 	accounts = append(accounts, "0x15Bb92E888cFF5ab5b557D4E75cE01eAEE1a9caA")
 
-	root, layers := eth.BuildMerkleTree(accounts)
+	root, _, _ := eth.BuildMerkleTree(accounts)
 
 	fmt.Println(root)
 	// 将 [32]byte 转换为十六进制字符串
@@ -107,16 +107,8 @@ func TestGenSetMerkleRoot(t *testing.T) {
 	fmt.Println("Merkle Tree Root for Solidity:", "0x"+rootHex)
 
 	// 生成并打印指定地址的 Merkle Proof
-	proof := eth.GenerateMerkleProof("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E", accounts) // 为第一个地址生成 proof
+	proof, _ := eth.BuildMerkleProof("0xc44cE209A984135B8C34b1B8408C43e2FDbB282E", accounts) // 为第一个地址生成 proof
 	for _, p := range proof {
 		fmt.Println("Proof part:", hex.EncodeToString(p[:]))
 	}
-
-	for i, layer := range layers {
-		fmt.Printf("Layer %d:\n", i)
-		for _, node := range layer {
-			fmt.Println(hex.EncodeToString(node[:]))
-		}
-	}
-
 }

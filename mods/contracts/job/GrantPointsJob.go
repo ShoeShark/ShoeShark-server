@@ -121,7 +121,7 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 		log.Error("[同步积分失败] init pointBiz error: ", err)
 	}
 
-	merkleRoot, _ := eth.BuildMerkleTree(accountsHex)
+	merkleRoot, _, _ := eth.BuildMerkleTree(accountsHex)
 	err = nftBiz.SetMerkleRoot(merkleRoot)
 
 	// 打印每个账户的积分总和

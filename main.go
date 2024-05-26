@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/shoe-shark/shoe-shark-service/config"
+	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/logger"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/routers"
@@ -31,6 +32,8 @@ func main() {
 	}
 	logger.InitLogger()
 	repository.Init()
+	eth.InitClient(cfg)
+
 	router := routers.InitRouter()
 
 	err := router.Run(fmt.Sprintf("%s%d", ":", cfg.Server.Port))

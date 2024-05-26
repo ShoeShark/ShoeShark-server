@@ -43,7 +43,7 @@ func MintWhiteList(ctx *context.Context) error {
 		return err
 	}
 
-	proof := eth.GenerateMerkleProof(accountAddress, accounts)
+	proof, _ := eth.BuildMerkleProof(accountAddress, accounts)
 	if proof == nil {
 		log.Error("un find nft contracts entity")
 		return errors.New("un find nft contracts entity")

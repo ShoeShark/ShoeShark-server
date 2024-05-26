@@ -16,14 +16,13 @@ func Keccak256(data []byte) [32]byte {
 	return hash
 }
 
-// buildMerkleTree constructs a Merkle tree and returns the root and layers.
-func BuildMerkleTree(elements []string) ([32]byte, [][][32]byte) {
+// BuildMerkleTree constructs a Merkle tree and returns the root and layers.
+func BuildMerkleTree(elements []string) ([32]byte, [][][32]byte, error) {
 	var leaves [][32]byte
 	for _, elem := range elements {
 		data, err := hex.DecodeString(elem[2:])
 		if err != nil {
-			fmt.Println("Error decoding string:", err)
-			continue
+			return [32]byte{}, nil, fmt.Errorf("error decoding string: %v", err)
 		}
 		hashed := Keccak256(data)
 		leaves = append(leaves, hashed)
@@ -33,33 +32,40 @@ func BuildMerkleTree(elements []string) ([32]byte, [][][32]byte) {
 	layers = append(layers, leaves)
 
 	for len(leaves) > 1 {
-		var nextLevel [][32]byte
+		var nextLevel [32]byte
+		var newLevel [][32]byte
+
 		for i := 0; i < len(leaves); i += 2 {
 			if i+1 < len(leaves) {
-				// 对两个节点进行排序
-				if bytes.Compare(leaves[i][:], leaves[i+1][:]) > 0 {
-					leaves[i], leaves[i+1] = leaves[i+1], leaves[i]
+				left := leaves[i]
+				right := leaves[i+1]
+				if bytes.Compare(left[:], right[:]) > 0 {
+					left, right = right, left
 				}
-				combined := append(leaves[i][:], leaves[i+1][:]...)
-				combinedHash := Keccak256(combined)
-				nextLevel = append(nextLevel, combinedHash)
+				combined := append(left[:], right[:]...)
+				nextLevel = Keccak256(combined)
+				newLevel = append(newLevel, nextLevel)
 			} else {
-				nextLevel = append(nextLevel, leaves[i])
+				newLevel = append(newLevel, leaves[i])
 			}
 		}
-		leaves = nextLevel
-		layers = append(layers, nextLevel)
+		leaves = newLevel
+		layers = append(layers, newLevel)
 	}
 
 	if len(leaves) == 0 {
-		return [32]byte{}, layers
+		return [32]byte{}, layers, nil
 	}
-	return leaves[0], layers
+	return leaves[0], layers, nil
 }
 
-// 根据给定的账户字符串和账户数组构建Merkle树并生成证明
-func GenerateMerkleProof(account string, accounts []string) [][32]byte {
-	_, layers := BuildMerkleTree(accounts)
+// BuildMerkleProof constructs a Merkle proof for the given account string from the list of accounts.
+func BuildMerkleProof(account string, accounts []string) ([][32]byte, error) {
+	_, layers, err := BuildMerkleTree(accounts)
+	if err != nil {
+		return nil, err
+	}
+
 	index := -1
 	for i, acc := range accounts {
 		if acc == account {
@@ -68,21 +74,16 @@ func GenerateMerkleProof(account string, accounts []string) [][32]byte {
 		}
 	}
 	if index == -1 {
-		fmt.Println("Account not found")
-		return nil
+		return nil, fmt.Errorf("account not found")
 	}
 
 	var proof [][32]byte
 	for _, layer := range layers[:len(layers)-1] {
 		pairIndex := index ^ 1
 		if pairIndex < len(layer) {
-			if bytes.Compare(layer[index][:], layer[pairIndex][:]) > 0 {
-				pairIndex = index // 如果当前节点的哈希大于兄弟节点的哈希，取当前节点为证明节点
-				index = index ^ 1
-			}
 			proof = append(proof, layer[pairIndex])
 		}
 		index /= 2
 	}
-	return proof // 返回证明, Merkle根和所有层
+	return proof, nil
 }

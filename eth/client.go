@@ -19,6 +19,7 @@ var (
 func InitClient(cfg *config.Config) {
 	var err error
 	clientInstance, err = ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
+	//clientInstance, err = ethclient.DialContext(context.Background(), "https://avalanche-fuji.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
 	if err != nil {
 		panic(fmt.Sprintf("Failed to connect to the Ethereum client: %v", err))
 	}
@@ -45,10 +46,18 @@ func NewTransactOpts(privateKey *ecdsa.PrivateKey, client *ethclient.Client) (*b
 		return nil, err
 	}
 
-	gasPrice, err := client.SuggestGasPrice(context.Background())
+	// 获取最新的区块以确定合适的 baseFee
+	header, err := client.HeaderByNumber(context.Background(), nil)
 	if err != nil {
 		return nil, err
 	}
+
+	baseFee := header.BaseFee
+
+	// 假设我们愿意支付基础费用的2倍，加上1 Gwei的小费
+	tip := big.NewInt(1e9) // 1 Gwei
+	gasFeeCap := new(big.Int).Mul(baseFee, big.NewInt(2))
+	gasFeeCap.Add(gasFeeCap, tip)
 
 	chainID, err := client.NetworkID(context.Background())
 	if err != nil {
@@ -63,7 +72,8 @@ func NewTransactOpts(privateKey *ecdsa.PrivateKey, client *ethclient.Client) (*b
 	auth.Nonce = big.NewInt(int64(nonce))
 	auth.Value = big.NewInt(0)      // default value
 	auth.GasLimit = uint64(3000000) // default gas limit
-	auth.GasPrice = gasPrice
+	auth.GasFeeCap = gasFeeCap
+	auth.GasTipCap = tip
 
 	return auth, nil
 }

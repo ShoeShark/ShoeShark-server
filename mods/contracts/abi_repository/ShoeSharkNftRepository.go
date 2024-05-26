@@ -2,6 +2,7 @@ package abi_repository
 
 import (
 	"crypto/ecdsa"
+	"errors"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
@@ -11,7 +12,7 @@ import (
 
 type ShoeSharkNftRepository struct {
 	client     *ethclient.Client
-	contract   *abi.ShoeSharkNft
+	Contract   *abi.ShoeSharkNft
 	privateKey *ecdsa.PrivateKey
 }
 
@@ -23,13 +24,13 @@ func NewShoeSharkNftRepository(client *ethclient.Client, contractAddress string,
 
 	return &ShoeSharkNftRepository{
 		client:     client,
-		contract:   contract,
+		Contract:   contract,
 		privateKey: privateKey,
 	}, nil
 }
 
 func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
-	contract := biz.contract
+	contract := biz.Contract
 
 	transactOpts, err := eth.NewTransactOpts(biz.privateKey, biz.client)
 	if err != nil {
@@ -47,11 +48,15 @@ func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
 }
 
 func (biz *ShoeSharkNftRepository) MintWhitelist(account common.Address, proof [][32]byte) error {
-	contract := biz.contract
+	contract := biz.Contract
 
 	transactOpts, err := eth.NewTransactOpts(biz.privateKey, biz.client)
 	if err != nil {
 		return err
+	}
+
+	if transactOpts == nil {
+		return errors.New("transation is null")
 	}
 
 	transaction, err := contract.MintWhitelist(transactOpts, account, proof)

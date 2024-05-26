@@ -10,7 +10,7 @@ import (
 )
 
 func TestGenerateAndVerifySignature(t *testing.T) {
-	privateKeyHex := "ecbce4fa58a8c6c8ad88425b43395ce8473c06de5ff16137bbbcabf3732f89cf"
+	privateKeyHex := "9da92c0d923d1c14b2c2e5699d4c0d840799d8e37bbc42ecedfef1b6dafcd84f"
 
 	// 将十六进制字符串转换为私钥对象
 	privateKey, err := crypto.HexToECDSA(privateKeyHex)
@@ -24,7 +24,7 @@ func TestGenerateAndVerifySignature(t *testing.T) {
 	fmt.Println("accountAddress:", accountAddress)
 
 	// 生成签名
-	nonce := "bc56c2d35b2a3bf509895de4b240a98c"
+	nonce := "a700659f750bea1f0daa4edfa21669f8"
 
 	signature, err := GenerateSignature(privateKey, nonce)
 	fmt.Println("signature:", signature)
