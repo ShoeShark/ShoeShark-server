@@ -14,6 +14,7 @@ import (
 
 // Upload
 // 上传图片接口
+// @Tags 上传
 // @Summary 上传图片
 // @Description 上传图片
 // @Accept  multipart/form-data
