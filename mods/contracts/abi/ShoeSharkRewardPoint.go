@@ -29,7 +29,7 @@ var (
 	_ = abi.ConvertType
 )
 
-// ShoeSharkRewardPointMetaData contains all meta data concerning the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointMetaData contains all meta data concerning the ShoeSharkRewardPoint contracts.
 var ShoeSharkRewardPointMetaData = &bind.MetaData{
 	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"_shoeSharkToken\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"SST\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"contractShoeSharkToken\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"exchangeRate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getUserPoints\",\"inputs\":[{\"name\":\"user\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"owner\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"redeemAllPointsForTokens\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"redeemPointsForTokensForAddress\",\"inputs\":[{\"name\":\"pointHolder\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"points\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"renounceOwnership\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"s_pointHolders\",\"inputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_pointsMap\",\"inputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"setExchangeRate\",\"inputs\":[{\"name\":\"newRate\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setPoint\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setPoints\",\"inputs\":[{\"name\":\"accounts\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"amounts\",\"type\":\"uint256[]\",\"internalType\":\"uint256[]\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"transferOwnership\",\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"inputs\":[{\"name\":\"previousOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"newOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkRewardPoint_BatchPointSet\",\"inputs\":[{\"name\":\"length\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkRewardPoint_PointSet\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"OwnableInvalidOwner\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"OwnableUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ShoeSharkRewardPoint__redeemPointsForTokensForAddress__NotEnoughPoints\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkRewardPoint__setPoints__NotEqualLength\",\"inputs\":[]}]",
 }
@@ -38,66 +38,66 @@ var ShoeSharkRewardPointMetaData = &bind.MetaData{
 // Deprecated: Use ShoeSharkRewardPointMetaData.ABI instead.
 var ShoeSharkRewardPointABI = ShoeSharkRewardPointMetaData.ABI
 
-// ShoeSharkRewardPoint is an auto generated Go binding around an Ethereum contract.
+// ShoeSharkRewardPoint is an auto generated Go binding around an Ethereum contracts.
 type ShoeSharkRewardPoint struct {
-	ShoeSharkRewardPointCaller     // Read-only binding to the contract
-	ShoeSharkRewardPointTransactor // Write-only binding to the contract
-	ShoeSharkRewardPointFilterer   // Log filterer for contract events
+	ShoeSharkRewardPointCaller     // Read-only binding to the contracts
+	ShoeSharkRewardPointTransactor // Write-only binding to the contracts
+	ShoeSharkRewardPointFilterer   // Log filterer for contracts events
 }
 
-// ShoeSharkRewardPointCaller is an auto generated read-only Go binding around an Ethereum contract.
+// ShoeSharkRewardPointCaller is an auto generated read-only Go binding around an Ethereum contracts.
 type ShoeSharkRewardPointCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ShoeSharkRewardPointTransactor is an auto generated write-only Go binding around an Ethereum contract.
+// ShoeSharkRewardPointTransactor is an auto generated write-only Go binding around an Ethereum contracts.
 type ShoeSharkRewardPointTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ShoeSharkRewardPointFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+// ShoeSharkRewardPointFilterer is an auto generated log filtering Go binding around an Ethereum contracts events.
 type ShoeSharkRewardPointFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// ShoeSharkRewardPointSession is an auto generated Go binding around an Ethereum contract,
+// ShoeSharkRewardPointSession is an auto generated Go binding around an Ethereum contracts,
 // with pre-set call and transact options.
 type ShoeSharkRewardPointSession struct {
-	Contract     *ShoeSharkRewardPoint // Generic contract binding to set the session for
+	Contract     *ShoeSharkRewardPoint // Generic contracts binding to set the session for
 	CallOpts     bind.CallOpts         // Call options to use throughout this session
 	TransactOpts bind.TransactOpts     // Transaction auth options to use throughout this session
 }
 
-// ShoeSharkRewardPointCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// ShoeSharkRewardPointCallerSession is an auto generated read-only Go binding around an Ethereum contracts,
 // with pre-set call options.
 type ShoeSharkRewardPointCallerSession struct {
-	Contract *ShoeSharkRewardPointCaller // Generic contract caller binding to set the session for
+	Contract *ShoeSharkRewardPointCaller // Generic contracts caller binding to set the session for
 	CallOpts bind.CallOpts               // Call options to use throughout this session
 }
 
-// ShoeSharkRewardPointTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// ShoeSharkRewardPointTransactorSession is an auto generated write-only Go binding around an Ethereum contracts,
 // with pre-set transact options.
 type ShoeSharkRewardPointTransactorSession struct {
-	Contract     *ShoeSharkRewardPointTransactor // Generic contract transactor binding to set the session for
+	Contract     *ShoeSharkRewardPointTransactor // Generic contracts transactor binding to set the session for
 	TransactOpts bind.TransactOpts               // Transaction auth options to use throughout this session
 }
 
-// ShoeSharkRewardPointRaw is an auto generated low-level Go binding around an Ethereum contract.
+// ShoeSharkRewardPointRaw is an auto generated low-level Go binding around an Ethereum contracts.
 type ShoeSharkRewardPointRaw struct {
-	Contract *ShoeSharkRewardPoint // Generic contract binding to access the raw methods on
+	Contract *ShoeSharkRewardPoint // Generic contracts binding to access the raw methods on
 }
 
-// ShoeSharkRewardPointCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+// ShoeSharkRewardPointCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contracts.
 type ShoeSharkRewardPointCallerRaw struct {
-	Contract *ShoeSharkRewardPointCaller // Generic read-only contract binding to access the raw methods on
+	Contract *ShoeSharkRewardPointCaller // Generic read-only contracts binding to access the raw methods on
 }
 
-// ShoeSharkRewardPointTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+// ShoeSharkRewardPointTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contracts.
 type ShoeSharkRewardPointTransactorRaw struct {
-	Contract *ShoeSharkRewardPointTransactor // Generic write-only contract binding to access the raw methods on
+	Contract *ShoeSharkRewardPointTransactor // Generic write-only contracts binding to access the raw methods on
 }
 
-// NewShoeSharkRewardPoint creates a new instance of ShoeSharkRewardPoint, bound to a specific deployed contract.
+// NewShoeSharkRewardPoint creates a new instance of ShoeSharkRewardPoint, bound to a specific deployed contracts.
 func NewShoeSharkRewardPoint(address common.Address, backend bind.ContractBackend) (*ShoeSharkRewardPoint, error) {
 	contract, err := bindShoeSharkRewardPoint(address, backend, backend, backend)
 	if err != nil {
@@ -106,7 +106,7 @@ func NewShoeSharkRewardPoint(address common.Address, backend bind.ContractBacken
 	return &ShoeSharkRewardPoint{ShoeSharkRewardPointCaller: ShoeSharkRewardPointCaller{contract: contract}, ShoeSharkRewardPointTransactor: ShoeSharkRewardPointTransactor{contract: contract}, ShoeSharkRewardPointFilterer: ShoeSharkRewardPointFilterer{contract: contract}}, nil
 }
 
-// NewShoeSharkRewardPointCaller creates a new read-only instance of ShoeSharkRewardPoint, bound to a specific deployed contract.
+// NewShoeSharkRewardPointCaller creates a new read-only instance of ShoeSharkRewardPoint, bound to a specific deployed contracts.
 func NewShoeSharkRewardPointCaller(address common.Address, caller bind.ContractCaller) (*ShoeSharkRewardPointCaller, error) {
 	contract, err := bindShoeSharkRewardPoint(address, caller, nil, nil)
 	if err != nil {
@@ -115,7 +115,7 @@ func NewShoeSharkRewardPointCaller(address common.Address, caller bind.ContractC
 	return &ShoeSharkRewardPointCaller{contract: contract}, nil
 }
 
-// NewShoeSharkRewardPointTransactor creates a new write-only instance of ShoeSharkRewardPoint, bound to a specific deployed contract.
+// NewShoeSharkRewardPointTransactor creates a new write-only instance of ShoeSharkRewardPoint, bound to a specific deployed contracts.
 func NewShoeSharkRewardPointTransactor(address common.Address, transactor bind.ContractTransactor) (*ShoeSharkRewardPointTransactor, error) {
 	contract, err := bindShoeSharkRewardPoint(address, nil, transactor, nil)
 	if err != nil {
@@ -124,7 +124,7 @@ func NewShoeSharkRewardPointTransactor(address common.Address, transactor bind.C
 	return &ShoeSharkRewardPointTransactor{contract: contract}, nil
 }
 
-// NewShoeSharkRewardPointFilterer creates a new log filterer instance of ShoeSharkRewardPoint, bound to a specific deployed contract.
+// NewShoeSharkRewardPointFilterer creates a new log filterer instance of ShoeSharkRewardPoint, bound to a specific deployed contracts.
 func NewShoeSharkRewardPointFilterer(address common.Address, filterer bind.ContractFilterer) (*ShoeSharkRewardPointFilterer, error) {
 	contract, err := bindShoeSharkRewardPoint(address, nil, nil, filterer)
 	if err != nil {
@@ -133,7 +133,7 @@ func NewShoeSharkRewardPointFilterer(address common.Address, filterer bind.Contr
 	return &ShoeSharkRewardPointFilterer{contract: contract}, nil
 }
 
-// bindShoeSharkRewardPoint binds a generic wrapper to an already deployed contract.
+// bindShoeSharkRewardPoint binds a generic wrapper to an already deployed contracts.
 func bindShoeSharkRewardPoint(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
 	parsed, err := ShoeSharkRewardPointMetaData.GetAbi()
 	if err != nil {
@@ -142,7 +142,7 @@ func bindShoeSharkRewardPoint(address common.Address, caller bind.ContractCaller
 	return bind.NewBoundContract(address, *parsed, caller, transactor, filterer), nil
 }
 
-// Call invokes the (constant) contract method with params as input values and
+// Call invokes the (constant) contracts method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
@@ -150,18 +150,18 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointRaw) Call(opts *bind.CallOpts, 
 	return _ShoeSharkRewardPoint.Contract.ShoeSharkRewardPointCaller.contract.Call(opts, result, method, params...)
 }
 
-// Transfer initiates a plain transaction to move funds to the contract, calling
+// Transfer initiates a plain transaction to move funds to the contracts, calling
 // its default method if one is available.
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.ShoeSharkRewardPointTransactor.contract.Transfer(opts)
 }
 
-// Transact invokes the (paid) contract method with params as input values.
+// Transact invokes the (paid) contracts method with params as input values.
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.ShoeSharkRewardPointTransactor.contract.Transact(opts, method, params...)
 }
 
-// Call invokes the (constant) contract method with params as input values and
+// Call invokes the (constant) contracts method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
@@ -169,18 +169,18 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerRaw) Call(opts *bind.Call
 	return _ShoeSharkRewardPoint.Contract.contract.Call(opts, result, method, params...)
 }
 
-// Transfer initiates a plain transaction to move funds to the contract, calling
+// Transfer initiates a plain transaction to move funds to the contracts, calling
 // its default method if one is available.
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.contract.Transfer(opts)
 }
 
-// Transact invokes the (paid) contract method with params as input values.
+// Transact invokes the (paid) contracts method with params as input values.
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.contract.Transact(opts, method, params...)
 }
 
-// SST is a free data retrieval call binding the contract method 0x2383a230.
+// SST is a free data retrieval call binding the contracts method 0x2383a230.
 //
 // Solidity: function SST() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SST(opts *bind.CallOpts) (common.Address, error) {
@@ -197,21 +197,21 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SST(opts *bind.CallOpts
 
 }
 
-// SST is a free data retrieval call binding the contract method 0x2383a230.
+// SST is a free data retrieval call binding the contracts method 0x2383a230.
 //
 // Solidity: function SST() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SST() (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.SST(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// SST is a free data retrieval call binding the contract method 0x2383a230.
+// SST is a free data retrieval call binding the contracts method 0x2383a230.
 //
 // Solidity: function SST() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) SST() (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.SST(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// ExchangeRate is a free data retrieval call binding the contract method 0x3ba0b9a9.
+// ExchangeRate is a free data retrieval call binding the contracts method 0x3ba0b9a9.
 //
 // Solidity: function exchangeRate() view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) ExchangeRate(opts *bind.CallOpts) (*big.Int, error) {
@@ -228,21 +228,21 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) ExchangeRate(opts *bind
 
 }
 
-// ExchangeRate is a free data retrieval call binding the contract method 0x3ba0b9a9.
+// ExchangeRate is a free data retrieval call binding the contracts method 0x3ba0b9a9.
 //
 // Solidity: function exchangeRate() view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) ExchangeRate() (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.ExchangeRate(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// ExchangeRate is a free data retrieval call binding the contract method 0x3ba0b9a9.
+// ExchangeRate is a free data retrieval call binding the contracts method 0x3ba0b9a9.
 //
 // Solidity: function exchangeRate() view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) ExchangeRate() (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.ExchangeRate(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// GetUserPoints is a free data retrieval call binding the contract method 0xaeefe31f.
+// GetUserPoints is a free data retrieval call binding the contracts method 0xaeefe31f.
 //
 // Solidity: function getUserPoints(address user) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) GetUserPoints(opts *bind.CallOpts, user common.Address) (*big.Int, error) {
@@ -259,21 +259,21 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) GetUserPoints(opts *bin
 
 }
 
-// GetUserPoints is a free data retrieval call binding the contract method 0xaeefe31f.
+// GetUserPoints is a free data retrieval call binding the contracts method 0xaeefe31f.
 //
 // Solidity: function getUserPoints(address user) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) GetUserPoints(user common.Address) (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.GetUserPoints(&_ShoeSharkRewardPoint.CallOpts, user)
 }
 
-// GetUserPoints is a free data retrieval call binding the contract method 0xaeefe31f.
+// GetUserPoints is a free data retrieval call binding the contracts method 0xaeefe31f.
 //
 // Solidity: function getUserPoints(address user) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) GetUserPoints(user common.Address) (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.GetUserPoints(&_ShoeSharkRewardPoint.CallOpts, user)
 }
 
-// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+// Owner is a free data retrieval call binding the contracts method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
@@ -290,21 +290,21 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) Owner(opts *bind.CallOp
 
 }
 
-// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+// Owner is a free data retrieval call binding the contracts method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) Owner() (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.Owner(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+// Owner is a free data retrieval call binding the contracts method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) Owner() (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.Owner(&_ShoeSharkRewardPoint.CallOpts)
 }
 
-// SPointHolders is a free data retrieval call binding the contract method 0xb8b770b0.
+// SPointHolders is a free data retrieval call binding the contracts method 0xb8b770b0.
 //
 // Solidity: function s_pointHolders(uint256 ) view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SPointHolders(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
@@ -321,21 +321,21 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SPointHolders(opts *bin
 
 }
 
-// SPointHolders is a free data retrieval call binding the contract method 0xb8b770b0.
+// SPointHolders is a free data retrieval call binding the contracts method 0xb8b770b0.
 //
 // Solidity: function s_pointHolders(uint256 ) view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SPointHolders(arg0 *big.Int) (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.SPointHolders(&_ShoeSharkRewardPoint.CallOpts, arg0)
 }
 
-// SPointHolders is a free data retrieval call binding the contract method 0xb8b770b0.
+// SPointHolders is a free data retrieval call binding the contracts method 0xb8b770b0.
 //
 // Solidity: function s_pointHolders(uint256 ) view returns(address)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) SPointHolders(arg0 *big.Int) (common.Address, error) {
 	return _ShoeSharkRewardPoint.Contract.SPointHolders(&_ShoeSharkRewardPoint.CallOpts, arg0)
 }
 
-// SPointsMap is a free data retrieval call binding the contract method 0x8ebb4f18.
+// SPointsMap is a free data retrieval call binding the contracts method 0x8ebb4f18.
 //
 // Solidity: function s_pointsMap(address ) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SPointsMap(opts *bind.CallOpts, arg0 common.Address) (*big.Int, error) {
@@ -352,170 +352,170 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCaller) SPointsMap(opts *bind.C
 
 }
 
-// SPointsMap is a free data retrieval call binding the contract method 0x8ebb4f18.
+// SPointsMap is a free data retrieval call binding the contracts method 0x8ebb4f18.
 //
 // Solidity: function s_pointsMap(address ) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SPointsMap(arg0 common.Address) (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.SPointsMap(&_ShoeSharkRewardPoint.CallOpts, arg0)
 }
 
-// SPointsMap is a free data retrieval call binding the contract method 0x8ebb4f18.
+// SPointsMap is a free data retrieval call binding the contracts method 0x8ebb4f18.
 //
 // Solidity: function s_pointsMap(address ) view returns(uint256)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointCallerSession) SPointsMap(arg0 common.Address) (*big.Int, error) {
 	return _ShoeSharkRewardPoint.Contract.SPointsMap(&_ShoeSharkRewardPoint.CallOpts, arg0)
 }
 
-// RedeemAllPointsForTokens is a paid mutator transaction binding the contract method 0xf4c90b58.
+// RedeemAllPointsForTokens is a paid mutator transaction binding the contracts method 0xf4c90b58.
 //
 // Solidity: function redeemAllPointsForTokens() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) RedeemAllPointsForTokens(opts *bind.TransactOpts) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "redeemAllPointsForTokens")
 }
 
-// RedeemAllPointsForTokens is a paid mutator transaction binding the contract method 0xf4c90b58.
+// RedeemAllPointsForTokens is a paid mutator transaction binding the contracts method 0xf4c90b58.
 //
 // Solidity: function redeemAllPointsForTokens() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) RedeemAllPointsForTokens() (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RedeemAllPointsForTokens(&_ShoeSharkRewardPoint.TransactOpts)
 }
 
-// RedeemAllPointsForTokens is a paid mutator transaction binding the contract method 0xf4c90b58.
+// RedeemAllPointsForTokens is a paid mutator transaction binding the contracts method 0xf4c90b58.
 //
 // Solidity: function redeemAllPointsForTokens() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) RedeemAllPointsForTokens() (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RedeemAllPointsForTokens(&_ShoeSharkRewardPoint.TransactOpts)
 }
 
-// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contract method 0xf6f0e0e6.
+// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contracts method 0xf6f0e0e6.
 //
 // Solidity: function redeemPointsForTokensForAddress(address pointHolder, uint256 points) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) RedeemPointsForTokensForAddress(opts *bind.TransactOpts, pointHolder common.Address, points *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "redeemPointsForTokensForAddress", pointHolder, points)
 }
 
-// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contract method 0xf6f0e0e6.
+// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contracts method 0xf6f0e0e6.
 //
 // Solidity: function redeemPointsForTokensForAddress(address pointHolder, uint256 points) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) RedeemPointsForTokensForAddress(pointHolder common.Address, points *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RedeemPointsForTokensForAddress(&_ShoeSharkRewardPoint.TransactOpts, pointHolder, points)
 }
 
-// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contract method 0xf6f0e0e6.
+// RedeemPointsForTokensForAddress is a paid mutator transaction binding the contracts method 0xf6f0e0e6.
 //
 // Solidity: function redeemPointsForTokensForAddress(address pointHolder, uint256 points) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) RedeemPointsForTokensForAddress(pointHolder common.Address, points *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RedeemPointsForTokensForAddress(&_ShoeSharkRewardPoint.TransactOpts, pointHolder, points)
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// RenounceOwnership is a paid mutator transaction binding the contracts method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "renounceOwnership")
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// RenounceOwnership is a paid mutator transaction binding the contracts method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) RenounceOwnership() (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RenounceOwnership(&_ShoeSharkRewardPoint.TransactOpts)
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// RenounceOwnership is a paid mutator transaction binding the contracts method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) RenounceOwnership() (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.RenounceOwnership(&_ShoeSharkRewardPoint.TransactOpts)
 }
 
-// SetExchangeRate is a paid mutator transaction binding the contract method 0xdb068e0e.
+// SetExchangeRate is a paid mutator transaction binding the contracts method 0xdb068e0e.
 //
 // Solidity: function setExchangeRate(uint256 newRate) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) SetExchangeRate(opts *bind.TransactOpts, newRate *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "setExchangeRate", newRate)
 }
 
-// SetExchangeRate is a paid mutator transaction binding the contract method 0xdb068e0e.
+// SetExchangeRate is a paid mutator transaction binding the contracts method 0xdb068e0e.
 //
 // Solidity: function setExchangeRate(uint256 newRate) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SetExchangeRate(newRate *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetExchangeRate(&_ShoeSharkRewardPoint.TransactOpts, newRate)
 }
 
-// SetExchangeRate is a paid mutator transaction binding the contract method 0xdb068e0e.
+// SetExchangeRate is a paid mutator transaction binding the contracts method 0xdb068e0e.
 //
 // Solidity: function setExchangeRate(uint256 newRate) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) SetExchangeRate(newRate *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetExchangeRate(&_ShoeSharkRewardPoint.TransactOpts, newRate)
 }
 
-// SetPoint is a paid mutator transaction binding the contract method 0xc7964257.
+// SetPoint is a paid mutator transaction binding the contracts method 0xc7964257.
 //
 // Solidity: function setPoint(address account, uint256 amount) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) SetPoint(opts *bind.TransactOpts, account common.Address, amount *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "setPoint", account, amount)
 }
 
-// SetPoint is a paid mutator transaction binding the contract method 0xc7964257.
+// SetPoint is a paid mutator transaction binding the contracts method 0xc7964257.
 //
 // Solidity: function setPoint(address account, uint256 amount) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SetPoint(account common.Address, amount *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetPoint(&_ShoeSharkRewardPoint.TransactOpts, account, amount)
 }
 
-// SetPoint is a paid mutator transaction binding the contract method 0xc7964257.
+// SetPoint is a paid mutator transaction binding the contracts method 0xc7964257.
 //
 // Solidity: function setPoint(address account, uint256 amount) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) SetPoint(account common.Address, amount *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetPoint(&_ShoeSharkRewardPoint.TransactOpts, account, amount)
 }
 
-// SetPoints is a paid mutator transaction binding the contract method 0x9a80c4a1.
+// SetPoints is a paid mutator transaction binding the contracts method 0x9a80c4a1.
 //
 // Solidity: function setPoints(address[] accounts, uint256[] amounts) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) SetPoints(opts *bind.TransactOpts, accounts []common.Address, amounts []*big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "setPoints", accounts, amounts)
 }
 
-// SetPoints is a paid mutator transaction binding the contract method 0x9a80c4a1.
+// SetPoints is a paid mutator transaction binding the contracts method 0x9a80c4a1.
 //
 // Solidity: function setPoints(address[] accounts, uint256[] amounts) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) SetPoints(accounts []common.Address, amounts []*big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetPoints(&_ShoeSharkRewardPoint.TransactOpts, accounts, amounts)
 }
 
-// SetPoints is a paid mutator transaction binding the contract method 0x9a80c4a1.
+// SetPoints is a paid mutator transaction binding the contracts method 0x9a80c4a1.
 //
 // Solidity: function setPoints(address[] accounts, uint256[] amounts) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) SetPoints(accounts []common.Address, amounts []*big.Int) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.SetPoints(&_ShoeSharkRewardPoint.TransactOpts, accounts, amounts)
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// TransferOwnership is a paid mutator transaction binding the contracts method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.contract.Transact(opts, "transferOwnership", newOwner)
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// TransferOwnership is a paid mutator transaction binding the contracts method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.TransferOwnership(&_ShoeSharkRewardPoint.TransactOpts, newOwner)
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// TransferOwnership is a paid mutator transaction binding the contracts method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
 	return _ShoeSharkRewardPoint.Contract.TransferOwnership(&_ShoeSharkRewardPoint.TransactOpts, newOwner)
 }
 
-// ShoeSharkRewardPointOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointOwnershipTransferredIterator struct {
-	Event *ShoeSharkRewardPointOwnershipTransferred // Event containing the contract specifics and raw log
+	Event *ShoeSharkRewardPointOwnershipTransferred // Event containing the contracts specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -580,14 +580,14 @@ func (it *ShoeSharkRewardPointOwnershipTransferredIterator) Close() error {
 	return nil
 }
 
-// ShoeSharkRewardPointOwnershipTransferred represents a OwnershipTransferred event raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointOwnershipTransferred represents a OwnershipTransferred event raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointOwnershipTransferred struct {
 	PreviousOwner common.Address
 	NewOwner      common.Address
 	Raw           types.Log // Blockchain specific contextual infos
 }
 
-// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// FilterOwnershipTransferred is a free log retrieval operation binding the contracts event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*ShoeSharkRewardPointOwnershipTransferredIterator, error) {
@@ -608,7 +608,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterOwnershipTransf
 	return &ShoeSharkRewardPointOwnershipTransferredIterator{contract: _ShoeSharkRewardPoint.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
 }
 
-// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// WatchOwnershipTransferred is a free log subscription operation binding the contracts event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *ShoeSharkRewardPointOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
@@ -654,7 +654,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchOwnershipTransfe
 	}), nil
 }
 
-// ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// ParseOwnershipTransferred is a log parse operation binding the contracts event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) ParseOwnershipTransferred(log types.Log) (*ShoeSharkRewardPointOwnershipTransferred, error) {
@@ -666,9 +666,9 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) ParseOwnershipTransfe
 	return event, nil
 }
 
-// ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator is returned from FilterShoeSharkRewardPointBatchPointSet and is used to iterate over the raw logs and unpacked data for ShoeSharkRewardPointBatchPointSet events raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator is returned from FilterShoeSharkRewardPointBatchPointSet and is used to iterate over the raw logs and unpacked data for ShoeSharkRewardPointBatchPointSet events raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator struct {
-	Event *ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet // Event containing the contract specifics and raw log
+	Event *ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet // Event containing the contracts specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -733,13 +733,13 @@ func (it *ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator) Close()
 	return nil
 }
 
-// ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet represents a ShoeSharkRewardPointBatchPointSet event raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet represents a ShoeSharkRewardPointBatchPointSet event raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet struct {
 	Length *big.Int
 	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterShoeSharkRewardPointBatchPointSet is a free log retrieval operation binding the contract event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
+// FilterShoeSharkRewardPointBatchPointSet is a free log retrieval operation binding the contracts event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
 //
 // Solidity: event ShoeSharkRewardPoint_BatchPointSet(uint256 length)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterShoeSharkRewardPointBatchPointSet(opts *bind.FilterOpts) (*ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator, error) {
@@ -751,7 +751,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterShoeSharkReward
 	return &ShoeSharkRewardPointShoeSharkRewardPointBatchPointSetIterator{contract: _ShoeSharkRewardPoint.contract, event: "ShoeSharkRewardPoint_BatchPointSet", logs: logs, sub: sub}, nil
 }
 
-// WatchShoeSharkRewardPointBatchPointSet is a free log subscription operation binding the contract event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
+// WatchShoeSharkRewardPointBatchPointSet is a free log subscription operation binding the contracts event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
 //
 // Solidity: event ShoeSharkRewardPoint_BatchPointSet(uint256 length)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchShoeSharkRewardPointBatchPointSet(opts *bind.WatchOpts, sink chan<- *ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet) (event.Subscription, error) {
@@ -788,7 +788,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchShoeSharkRewardP
 	}), nil
 }
 
-// ParseShoeSharkRewardPointBatchPointSet is a log parse operation binding the contract event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
+// ParseShoeSharkRewardPointBatchPointSet is a log parse operation binding the contracts event 0x015fe5e6142fe7776168060d5fd0058d1dd80ae0a1163d17db7d650d143cadc9.
 //
 // Solidity: event ShoeSharkRewardPoint_BatchPointSet(uint256 length)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) ParseShoeSharkRewardPointBatchPointSet(log types.Log) (*ShoeSharkRewardPointShoeSharkRewardPointBatchPointSet, error) {
@@ -800,9 +800,9 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) ParseShoeSharkRewardP
 	return event, nil
 }
 
-// ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator is returned from FilterShoeSharkRewardPointPointSet and is used to iterate over the raw logs and unpacked data for ShoeSharkRewardPointPointSet events raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator is returned from FilterShoeSharkRewardPointPointSet and is used to iterate over the raw logs and unpacked data for ShoeSharkRewardPointPointSet events raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator struct {
-	Event *ShoeSharkRewardPointShoeSharkRewardPointPointSet // Event containing the contract specifics and raw log
+	Event *ShoeSharkRewardPointShoeSharkRewardPointPointSet // Event containing the contracts specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -867,14 +867,14 @@ func (it *ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator) Close() erro
 	return nil
 }
 
-// ShoeSharkRewardPointShoeSharkRewardPointPointSet represents a ShoeSharkRewardPointPointSet event raised by the ShoeSharkRewardPoint contract.
+// ShoeSharkRewardPointShoeSharkRewardPointPointSet represents a ShoeSharkRewardPointPointSet event raised by the ShoeSharkRewardPoint contracts.
 type ShoeSharkRewardPointShoeSharkRewardPointPointSet struct {
 	Account common.Address
 	Amount  *big.Int
 	Raw     types.Log // Blockchain specific contextual infos
 }
 
-// FilterShoeSharkRewardPointPointSet is a free log retrieval operation binding the contract event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
+// FilterShoeSharkRewardPointPointSet is a free log retrieval operation binding the contracts event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
 //
 // Solidity: event ShoeSharkRewardPoint_PointSet(address indexed account, uint256 amount)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterShoeSharkRewardPointPointSet(opts *bind.FilterOpts, account []common.Address) (*ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator, error) {
@@ -891,7 +891,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) FilterShoeSharkReward
 	return &ShoeSharkRewardPointShoeSharkRewardPointPointSetIterator{contract: _ShoeSharkRewardPoint.contract, event: "ShoeSharkRewardPoint_PointSet", logs: logs, sub: sub}, nil
 }
 
-// WatchShoeSharkRewardPointPointSet is a free log subscription operation binding the contract event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
+// WatchShoeSharkRewardPointPointSet is a free log subscription operation binding the contracts event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
 //
 // Solidity: event ShoeSharkRewardPoint_PointSet(address indexed account, uint256 amount)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchShoeSharkRewardPointPointSet(opts *bind.WatchOpts, sink chan<- *ShoeSharkRewardPointShoeSharkRewardPointPointSet, account []common.Address) (event.Subscription, error) {
@@ -933,7 +933,7 @@ func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) WatchShoeSharkRewardP
 	}), nil
 }
 
-// ParseShoeSharkRewardPointPointSet is a log parse operation binding the contract event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
+// ParseShoeSharkRewardPointPointSet is a log parse operation binding the contracts event 0xa7edf51bc67b4fa6b662aead0f2a92547f3f8d7f250f61ff4218fa017bf51083.
 //
 // Solidity: event ShoeSharkRewardPoint_PointSet(address indexed account, uint256 amount)
 func (_ShoeSharkRewardPoint *ShoeSharkRewardPointFilterer) ParseShoeSharkRewardPointPointSet(log types.Log) (*ShoeSharkRewardPointShoeSharkRewardPointPointSet, error) {

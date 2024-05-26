@@ -42,8 +42,8 @@ func GetConfig() *Config {
 	return &cfg
 }
 
-func InitConfig() {
-	data, err := os.ReadFile("resources/application.dev.yml")
+func InitConfig(filePath string) {
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 		panic("parse config fail" + err.Error())
 	}

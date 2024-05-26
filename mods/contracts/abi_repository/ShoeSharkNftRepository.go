@@ -45,3 +45,21 @@ func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
 
 	return nil
 }
+
+func (biz *ShoeSharkNftRepository) MintWhitelist(account common.Address, proof [][32]byte) error {
+	contract := biz.contract
+
+	transactOpts, err := eth.NewTransactOpts(biz.privateKey, biz.client)
+	if err != nil {
+		return err
+	}
+
+	transaction, err := contract.MintWhitelist(transactOpts, account, proof)
+	if err != nil {
+		return err
+	}
+
+	log.Info("MintWhitelist success: ", transaction)
+
+	return nil
+}

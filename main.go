@@ -19,7 +19,7 @@ import (
 )
 
 func main() {
-	config.InitConfig()
+	config.InitConfig("resources/application.dev.yml")
 
 	cfg := config.GetConfig()
 	if cfg.AppMode == "dev" {

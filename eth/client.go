@@ -13,18 +13,28 @@ import (
 
 var (
 	clientInstance *ethclient.Client
+	privateKey     *ecdsa.PrivateKey
 )
 
 func InitClient(cfg *config.Config) {
 	var err error
-	clientInstance, err = ethclient.DialContext(context.Background(), "https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID")
+	clientInstance, err = ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
 	if err != nil {
 		panic(fmt.Sprintf("Failed to connect to the Ethereum client: %v", err))
+	}
+
+	privateKey, err = crypto.HexToECDSA("7111ec7d38f35eaa460c85991cd269ee4f39f567ffb587d4e6aa474b38dccb7e")
+	if err != nil {
+		panic(fmt.Sprintf("Failed to  init privateKey: %v", err))
 	}
 }
 
 func GetClient() *ethclient.Client {
 	return clientInstance
+}
+
+func GetPrivateKey() *ecdsa.PrivateKey {
+	return privateKey
 }
 
 // NewTransactOpts creates a new instance of TransactOpts with the given private key

@@ -3,8 +3,10 @@ package schema
 import "time"
 
 type UserPointsLog struct {
-	AccountAddress string    `gorm:"primaryKey;type:varchar(42);not null"`
+	ID             uint      `gorm:"primaryKey"`
+	AccountAddress string    `gorm:"not null;size:42"`
 	Points         int64     `gorm:"not null"`
+	IsSyncLink     bool      `gorm:"default:false"`
 	CreatedAt      time.Time `gorm:"default:current_timestamp"`
 }
 

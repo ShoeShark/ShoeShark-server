@@ -341,6 +341,30 @@ paths:
       summary: Create a new content
       tags:
       - contents
+  /api/v1/contract/mint/white:
+    get:
+      description: mint nft , this mint must in white list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.ContentInfoRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: mint nft
+      tags:
+      - contract_nft
   /api/v1/user:
     get:
       consumes:
