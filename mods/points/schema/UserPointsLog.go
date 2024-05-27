@@ -7,6 +7,7 @@ type UserPointsLog struct {
 	AccountAddress string    `gorm:"not null;size:42"`
 	Points         int64     `gorm:"not null"`
 	IsSyncLink     bool      `gorm:"default:false"`
+	Source         string    `gorm:"not null"`
 	CreatedAt      time.Time `gorm:"default:current_timestamp"`
 }
 

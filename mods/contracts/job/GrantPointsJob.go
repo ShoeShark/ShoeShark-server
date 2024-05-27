@@ -8,6 +8,7 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi_repository"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/constants"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/dao"
+	dao2 "github.com/shoe-shark/shoe-shark-service/mods/points/dao"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	log "github.com/sirupsen/logrus"
 	"math/big"
@@ -52,7 +53,7 @@ func (cj *ShoeSharkContractJob) scheduleTask() {
 func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 	// 获取所需要同步的积分
 	rp := repository.GetPGRepository()
-	pointsLogs, err := dao.GetUnSyncedLogs(rp)
+	pointsLogs, err := dao2.GetUnSyncedLogs(rp)
 	if err != nil {
 		log.Error("[同步积分失败][获取积分异常]  ", err)
 		return
@@ -127,14 +128,14 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 	// 打印每个账户的积分总和
 	// 更新记录的同步状态
 	if len(idsToUpdate) > 0 {
-		err = dao.UpdateIsSyncLink(rp, idsToUpdate, true)
+		err = dao2.UpdateIsSyncLink(rp, idsToUpdate, true)
 		if err != nil {
 			log.Error("[同步积分失败][修改同步状态失败]  ", err)
 			return
 		}
 	}
 
-	err = dao.AddPointsBatch(rp, accountsHex, points)
+	err = dao2.AddPointsBatch(rp, accountsHex, points)
 	if err != nil {
 		log.Error("[同步积分失败][修改用户积分] ", err)
 	}

@@ -2,7 +2,7 @@ package dao
 
 import (
 	"fmt"
-	"github.com/shoe-shark/shoe-shark-service/mods/contracts/schema"
+	"github.com/shoe-shark/shoe-shark-service/mods/points/schema"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 	"gorm.io/gorm"
 	"math/big"

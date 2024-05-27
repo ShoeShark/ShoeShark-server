@@ -63,6 +63,17 @@ definitions:
       nonce:
         type: string
     type: object
+  res.PointsLogRes:
+    properties:
+      createdAt:
+        type: string
+      isSyncLink:
+        type: boolean
+      points:
+        type: integer
+      source:
+        type: string
+    type: object
   res.UserInfoRes:
     properties:
       accountAddress:
@@ -396,6 +407,65 @@ paths:
       summary: 上传图片
       tags:
       - 上传
+  /api/v1/points/log:
+    get:
+      consumes:
+      - application/json
+      description: 查看个人积分记录
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Page size
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/res.PointsLogRes'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 查看积分记录
+      tags:
+      - points
+  /api/v1/points/signIn:
+    get:
+      description: 签到得积分
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 签到
+      tags:
+      - points
   /api/v1/user:
     get:
       consumes:
