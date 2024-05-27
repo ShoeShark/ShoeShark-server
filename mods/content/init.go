@@ -15,4 +15,6 @@ func RegisterV1Routers(router *gin.RouterGroup) {
 	r.GET("/:contentId", api.GetContent)
 	r.PUT("/edit", api.UpdateContent)
 	r.GET("/list", api.ListContent)
+	r.GET("/comments/:contentId", api.ListContentsComments)
+	r.POST("/comments", api.CreateContentComments)
 }

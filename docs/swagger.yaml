@@ -1,5 +1,12 @@
 basePath: /shoe-shark
 definitions:
+  req.CreateContentCommentReq:
+    properties:
+      contentId:
+        type: string
+      description:
+        type: string
+    type: object
   req.CreateContentReq:
     properties:
       description:
@@ -56,6 +63,17 @@ definitions:
       location:
         type: string
       title:
+        type: string
+    type: object
+  res.CreateContentCommentRes:
+    properties:
+      accountAddress:
+        type: string
+      contentId:
+        type: string
+      createdAt:
+        type: string
+      description:
         type: string
     type: object
   res.GetNonceRes:
@@ -225,6 +243,74 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Get a content
+      tags:
+      - contents
+  /api/v1/content/comments:
+    post:
+      consumes:
+      - application/json
+      description: 给内容添加评论
+      parameters:
+      - description: 内容评论结构体
+        in: body
+        name: content
+        required: true
+        schema:
+          $ref: '#/definitions/req.CreateContentCommentReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 评论内容
+      tags:
+      - contents
+  /api/v1/content/comments/{contentId}:
+    get:
+      description: 根据内容Id获取评论
+      parameters:
+      - description: Content ID
+        in: path
+        name: contentId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.CreateContentCommentRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 评论列表
       tags:
       - contents
   /api/v1/content/edit:
