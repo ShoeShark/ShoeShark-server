@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/google/uuid"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
+	"github.com/shoe-shark/shoe-shark-service/mods/content/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/dao"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
@@ -28,15 +29,26 @@ func InsertComment(ctx *context.Context, req *req.CreateContentCommentReq) error
 	return nil
 }
 
-func GetCommentsByContentID(contentID uuid.UUID) ([]schema.ContentsComment, error) {
+func GetCommentsByContentID(contentID uuid.UUID) ([]res.CreateContentCommentRes, error) {
 	// 查询评论
 	comments, err := dao.GetCommentsByContentID(db.GetPGRepository(), contentID)
 	if err != nil {
 		return nil, err
 	}
 
-	//var contentCommentInfos []res.CreateContentCommentRes
-	//err = util.GenericConvert(&comments, &contentCommentInfos)
+	var contentCommentInfos []res.CreateContentCommentRes
+	if len(comments) > 0 {
 
-	return comments, nil
+		for _, comment := range comments {
+			contentCommentInfos = append(contentCommentInfos, res.CreateContentCommentRes{
+				ContentId:      comment.ContentID,
+				Description:    comment.Description,
+				CreatedAt:      comment.CreatedAt,
+				AccountAddress: comment.AccountAddress,
+			})
+		}
+		return contentCommentInfos, nil
+	}
+
+	return contentCommentInfos, nil
 }
