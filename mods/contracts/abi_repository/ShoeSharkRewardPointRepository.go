@@ -2,6 +2,7 @@ package abi_repository
 
 import (
 	"crypto/ecdsa"
+	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -55,7 +56,8 @@ func (biz *ShoeSharkRewardPointRepository) SetPoints(accounts []common.Address, 
 		return err
 	}
 
-	log.Info("SetPoints transaction successfully", transaction)
+	log.Info("SetPoints transaction successfully txHash: ", transaction.Hash().Hex())
 
+	fmt.Println("setPoints transaction successfully txHash: ", transaction.Hash().Hex())
 	return nil
 }

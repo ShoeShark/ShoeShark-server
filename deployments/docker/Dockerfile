@@ -23,7 +23,7 @@ RUN go build -o main .
 FROM alpine:latest
 
 # 安装 bash
-RUN apk add --no-cache bash
+#RUN apk add --no-cache bash
 
 # 设置工作目录
 WORKDIR /root/

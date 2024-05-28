@@ -1,45 +1,28 @@
 package job
 
 import (
-	"context"
-	"crypto/ecdsa"
 	"encoding/hex"
 	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/logger"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi_repository"
 	"github.com/shoe-shark/shoe-shark-service/repository"
+	"os"
 	"testing"
 )
 
-func GetClientAndPrivateKey() (*ethclient.Client, *ecdsa.PrivateKey, error) {
-	client, err := ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
-	if err != nil {
-		return nil, nil, err
-	}
-
-	privateKey, err := crypto.HexToECDSA("7111ec7d38f35eaa460c85991cd269ee4f39f567ffb587d4e6aa474b38dccb7e")
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return client, privateKey, nil
-}
-
 func TestGrantPointsJob(t *testing.T) {
 
+	os.Setenv("GIN_MODE", "dev")
 	config.InitConfig("../../../resources/application.dev.yml")
 	logger.InitLogger()
 	repository.Init()
 
-	client, privateKey, err := GetClientAndPrivateKey()
-	if err != nil {
-		t.Fatal(err)
-	}
+	eth.InitClient(nil)
+
+	client, privateKey := eth.GetClient(), eth.GetPrivateKey()
 
 	job := &ShoeSharkContractJob{
 		client:     client,

@@ -8,7 +8,6 @@ import (
 var cfg Config
 
 type Config struct {
-	AppMode     string    `yaml:"app_mode"`
 	Server      *Server   `yaml:"server"`
 	Logging     *Logging  `yaml:"logging"`
 	Database    *Database `yaml:"database"`

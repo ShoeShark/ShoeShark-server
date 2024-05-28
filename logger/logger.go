@@ -34,7 +34,8 @@ func InitLogger() {
 	}
 	log.SetReportCaller(true) // 打印文件、行号和主调函数。
 
-	if cfg.AppMode == "dev" {
+	ginMode := os.Getenv("GIN_MODE")
+	if ginMode == "dev" {
 		log.SetOutput(os.Stdout)
 	} else {
 		// 实现日志滚动。
