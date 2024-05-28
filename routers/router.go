@@ -29,7 +29,7 @@ func CORSMiddleware() gin.HandlerFunc {
 func InitRouter() *gin.Engine {
 	r := gin.New()
 
-	if os.Getenv("GIN_MODE") == "dev" {
+	if os.Getenv("GIN_MODE") == gin.DebugMode {
 		r.Use(CORSMiddleware())
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}
