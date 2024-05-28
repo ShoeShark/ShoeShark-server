@@ -20,8 +20,16 @@ type ShoeSharkContractJob struct {
 	privateKey *ecdsa.PrivateKey
 }
 
+func NewJob(client *ethclient.Client, privateKey *ecdsa.PrivateKey) *ShoeSharkContractJob {
+	return &ShoeSharkContractJob{
+		client:     client,
+		privateKey: privateKey,
+	}
+}
+
 func (cj *ShoeSharkContractJob) StartJob() {
 	// 启动定时任务的 goroutine
+	log.Info("[ContractJob] ", "Starting Contract job")
 	go cj.scheduleTask()
 }
 
@@ -42,6 +50,7 @@ func (cj *ShoeSharkContractJob) scheduleTask() {
 		select {
 		case <-timer.C:
 			// 执行任务
+			log.Info("[ContractJob] ", " Running job")
 			cj.startGrantPointsJob()
 
 			// 重置定时器
@@ -97,12 +106,12 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 		return
 	}
 
-	pointBiz, err := abi_repository.NewShoeSharkRewardPointRepository(cj.client, rewardPointContractAddress, cj.privateKey)
+	pointBiz, err := abi_repository.NewShoeSharkRewardPointRepository(cj.Client, rewardPointContractAddress, cj.privateKey)
 	if err != nil {
 		log.Error("init ShoeSharkRewardPointRepository error: ", err)
 	}
 
-	nftBiz, err := abi_repository.NewShoeSharkNftRepository(cj.client, nftContractAddress, cj.privateKey)
+	nftBiz, err := abi_repository.NewShoeSharkNftRepository(cj.Client, nftContractAddress, cj.privateKey)
 	if err != nil {
 		log.Error("init ShoeSharkNftRepository error: ", err)
 	}

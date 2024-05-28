@@ -27,7 +27,7 @@ func MintWhiteList(ctx *context.Context) error {
 
 	account := common.HexToAddress(accountAddress)
 
-	eth.InitClient(nil)
+	//eth.InitClient(nil)
 	client := eth.GetClient()
 	privateKey := eth.GetPrivateKey()
 

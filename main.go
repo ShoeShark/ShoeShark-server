@@ -46,7 +46,6 @@ func main() {
 	cfg.ResourceDir = resourcesDir
 
 	router := routers.InitRouter()
-	//router.Static("/static", resourcesDir)
 
 	err = router.Run(fmt.Sprintf("%s%d", ":", cfg.Server.Port))
 	if err != nil {

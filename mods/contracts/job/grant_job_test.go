@@ -42,7 +42,7 @@ func TestGrantPointsJob(t *testing.T) {
 	}
 
 	job := &ShoeSharkContractJob{
-		client:     client,
+		Client:     client,
 		privateKey: privateKey,
 	}
 
