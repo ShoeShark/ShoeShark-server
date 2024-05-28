@@ -9,6 +9,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"math/big"
+	"os"
 )
 
 var (
@@ -24,7 +25,7 @@ func InitClient(cfg *config.Config) {
 		panic(fmt.Sprintf("Failed to connect to the Ethereum client: %v", err))
 	}
 
-	privateKey, err = crypto.HexToECDSA("57ecc1d002c1fff33077b1ab5ac2900a21a35bc0493b22adc9003967080bb245")
+	privateKey, err = crypto.HexToECDSA(os.Getenv("PRIVATE_KEY"))
 	if err != nil {
 		panic(fmt.Sprintf("Failed to  init privateKey: %v", err))
 	}
