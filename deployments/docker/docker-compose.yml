@@ -13,3 +13,4 @@ services:
       - ../../resources/static:/app/resources/static  # 挂载资源文件
     environment:
       - GIN_MODE=release
+      - /usr/shoe_shark/deploy_scripts/.env
