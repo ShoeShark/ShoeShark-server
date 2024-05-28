@@ -13,5 +13,6 @@ func RegisterV1Routers(router *gin.RouterGroup) {
 	{
 		authRouter.GET("/log", api.PointsLogsHandler)
 		authRouter.GET("/signIn", api.SignInHandler)
+		authRouter.GET("/account", api.GetPointsHandler)
 	}
 }

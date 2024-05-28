@@ -3,7 +3,9 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/shoe-shark/shoe-shark-service/middleware"
+	pointsContractBiz "github.com/shoe-shark/shoe-shark-service/mods/contracts/biz"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/req"
+	"github.com/shoe-shark/shoe-shark-service/mods/points/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/biz"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"strconv"
@@ -27,6 +29,35 @@ func SignInHandler(c *gin.Context) {
 		return
 	}
 	util.ResOk(c)
+}
+
+// GetPointsHandler
+// @Summary 账户积分
+// @Description 账户积分
+// @Tags points
+// @Produce json
+// @Security ApiKeyAuth
+// @Success 200 {object} res.AccountPointsInfoRes
+// @Failure 500 {object} util.Response{Msg=string}
+// @Router /api/v1/points/account [get]
+func GetPointsHandler(c *gin.Context) {
+	newCtx := middleware.GenContextWithInformation(c)
+
+	points, err := biz.GetPoints(&newCtx)
+	if err != nil {
+		util.ResErrorWithMsg(c, err.Error())
+		return
+	}
+
+	linkPoints, err := pointsContractBiz.GetPoints(&newCtx)
+	if err != nil {
+		util.ResErrorWithMsg(c, err.Error())
+	}
+
+	util.ResOkWithData(c, &res.AccountPointsInfoRes{
+		Points:     points,
+		LinkPoints: linkPoints.Int64(),
+	})
 }
 
 // PointsLogsHandler

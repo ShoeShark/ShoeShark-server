@@ -61,7 +61,7 @@ func (biz *ShoeSharkNftRepository) MintWhitelist(account common.Address, proof [
 		return errors.New("transation is null")
 	}
 
-	transaction, err := contract.MintWhitelist(transactOpts, account, proof)
+	transaction, err := contract.MintWhiteList(transactOpts, account, proof)
 	if err != nil {
 		return err
 	}

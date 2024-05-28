@@ -2,6 +2,7 @@ package abi_repository
 
 import (
 	"crypto/ecdsa"
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
@@ -27,6 +28,18 @@ func NewShoeSharkRewardPointRepository(client *ethclient.Client, contractAddress
 		contract:   contract,
 		privateKey: privateKey,
 	}, nil
+}
+
+func (biz *ShoeSharkRewardPointRepository) GetPoints(account common.Address) *big.Int {
+	contract := biz.contract
+
+	points, err := contract.GetUserPoints(&bind.CallOpts{}, account)
+	if err != nil {
+		log.Error("Get user:", account, " points error:", err)
+		return big.NewInt(0)
+	}
+
+	return points
 }
 
 func (biz *ShoeSharkRewardPointRepository) SetPoints(accounts []common.Address, points []*big.Int) error {

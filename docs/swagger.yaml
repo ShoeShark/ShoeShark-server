@@ -48,6 +48,13 @@ definitions:
     - accountAddress
     - signature
     type: object
+  res.AccountPointsInfoRes:
+    properties:
+      linkPoints:
+        type: integer
+      points:
+        type: integer
+    type: object
   res.ContentInfoRes:
     properties:
       accountAddress:
@@ -493,6 +500,30 @@ paths:
       summary: 上传图片
       tags:
       - 上传
+  /api/v1/points/account:
+    get:
+      description: 账户积分
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/res.AccountPointsInfoRes'
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 账户积分
+      tags:
+      - points
   /api/v1/points/log:
     get:
       consumes:

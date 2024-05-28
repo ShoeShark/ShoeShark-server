@@ -31,7 +31,7 @@ var (
 
 // ShoeSharkNftMetaData contains all meta data concerning the ShoeSharkNft contract.
 var ShoeSharkNftMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"merkleroot\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"metadataUri\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"ERC721EnumerableForbiddenBatchMint\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"ERC721IncorrectOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ERC721InsufficientApproval\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"approver\",\"type\":\"address\"}],\"name\":\"ERC721InvalidApprover\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"ERC721InvalidOperator\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"ERC721InvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"ERC721InvalidReceiver\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"ERC721InvalidSender\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ERC721NonexistentToken\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"ERC721OutOfBoundsIndex\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__burn__OnlyBurnByTokenOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__byOwner__OnlyOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mintWhitelist__HasMinted\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mintWhitelist__InvalidMintCost\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mintWhitelist__NotInWhitelist\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mintWhitelist__TransferFaild\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mint__MintingIsNotAllowed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__mint__TokenIdOverflow\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__tokenURI__TokenUriNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__withdraw__BalanceIsZeroWhenWithdrawing\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ShoeSharkNft__withdraw__WithdrawFailed\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"approved\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_fromTokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_toTokenId\",\"type\":\"uint256\"}],\"name\":\"BatchMetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"MetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ShoeSharkNft_NftBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ShoeSharkNft_NftMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"ShoeSharkNft_Withdraw\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMetadataUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMetadataUriSuffix\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTokenCounter\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getTokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"internalType\":\"bytes32[]\",\"name\":\"proof\",\"type\":\"bytes32[]\"}],\"name\":\"mintWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"s_HasMinted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_root\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"isMinting\",\"type\":\"bool\"}],\"name\":\"setIsMinting\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"name\":\"setMetadataUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"name\":\"setMintMaxTotal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"name\":\"setMintOneCost\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"newRoot\",\"type\":\"bytes32\"}],\"name\":\"setRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenByIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenOfOwnerByIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}]",
+	ABI: "[{\"type\":\"constructor\",\"inputs\":[{\"name\":\"merkleroot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"metadataUri\",\"type\":\"string\",\"internalType\":\"string\"},{\"name\":\"initialOwner\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"subscriptionId\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"mintMaxTotal\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"vrfCoordinator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"keyHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"approve\",\"inputs\":[{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"balanceOf\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"burn\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"getApproved\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getMetadataUri\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\",\"internalType\":\"string\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getOwner\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getTokenCounter\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"isApprovedForAll\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"operator\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"mintWhiteList\",\"inputs\":[{\"name\":\"player\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"proof\",\"type\":\"bytes32[]\",\"internalType\":\"bytes32[]\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"name\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\",\"internalType\":\"string\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"owner\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"ownerOf\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"rawFulfillRandomWords\",\"inputs\":[{\"name\":\"requestId\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"randomWords\",\"type\":\"uint256[]\",\"internalType\":\"uint256[]\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"renounceOwnership\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"s_HasMinted\",\"inputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_IsMinting\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_Numbers\",\"inputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_RemainingNumbers\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_RequestIdToTokenId\",\"inputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"s_Root\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"safeTransferFrom\",\"inputs\":[{\"name\":\"from\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"safeTransferFrom\",\"inputs\":[{\"name\":\"from\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setApprovalForAll\",\"inputs\":[{\"name\":\"operator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"approved\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setIsMinting\",\"inputs\":[{\"name\":\"isMinting\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setMetadataUri\",\"inputs\":[{\"name\":\"uri\",\"type\":\"string\",\"internalType\":\"string\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setRoot\",\"inputs\":[{\"name\":\"newRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"supportsInterface\",\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\",\"internalType\":\"bytes4\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\",\"internalType\":\"bool\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"symbol\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\",\"internalType\":\"string\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"tokenByIndex\",\"inputs\":[{\"name\":\"index\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"tokenOfOwnerByIndex\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"index\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"tokenURI\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"string\",\"internalType\":\"string\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"totalSupply\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"transferFrom\",\"inputs\":[{\"name\":\"from\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"transferOwnership\",\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"payable\"},{\"type\":\"event\",\"name\":\"Approval\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"approved\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"indexed\":true,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ApprovalForAll\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"operator\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"approved\",\"type\":\"bool\",\"indexed\":false,\"internalType\":\"bool\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"BatchMetadataUpdate\",\"inputs\":[{\"name\":\"_fromTokenId\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"},{\"name\":\"_toTokenId\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"MetadataUpdate\",\"inputs\":[{\"name\":\"_tokenId\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"inputs\":[{\"name\":\"previousOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"newOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkNft_NftBurned\",\"inputs\":[{\"name\":\"player\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"indexed\":true,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkNft_NftMinted\",\"inputs\":[{\"name\":\"player\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"indexed\":true,\"internalType\":\"uint256\"},{\"name\":\"requestId\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkNft_Withdraw\",\"inputs\":[],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ShoeSharkNft_tokenIdtoTokenURI\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"indexed\":true,\"internalType\":\"uint256\"},{\"name\":\"metadateIndex\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Transfer\",\"inputs\":[{\"name\":\"from\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"indexed\":true,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"ERC721EnumerableForbiddenBatchMint\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ERC721IncorrectOwner\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721InsufficientApproval\",\"inputs\":[{\"name\":\"operator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"ERC721InvalidApprover\",\"inputs\":[{\"name\":\"approver\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721InvalidOperator\",\"inputs\":[{\"name\":\"operator\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721InvalidOwner\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721InvalidReceiver\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721InvalidSender\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ERC721NonexistentToken\",\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"ERC721OutOfBoundsIndex\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"index\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"OnlyCoordinatorCanFulfill\",\"inputs\":[{\"name\":\"have\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"want\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"OwnableInvalidOwner\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"OwnableUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__burn__OnlyBurnByTokenOwner\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__byOwner__OnlyOwner\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mintWhitelist__HasMinted\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mintWhitelist__InvalidMintCost\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mintWhitelist__NotInWhitelist\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mintWhitelist__TransferFaild\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mint__MintingIsNotAllowed\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mint__NoMoreNft\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__mint__TokenIdOverflow\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__tokenURI__TokenUriNotFound\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__withdraw__BalanceIsZeroWhenWithdrawing\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ShoeSharkNft__withdraw__WithdrawFailed\",\"inputs\":[]}]",
 }
 
 // ShoeSharkNftABI is the input ABI used to generate the binding from.
@@ -273,37 +273,6 @@ func (_ShoeSharkNft *ShoeSharkNftCallerSession) GetMetadataUri() (string, error)
 	return _ShoeSharkNft.Contract.GetMetadataUri(&_ShoeSharkNft.CallOpts)
 }
 
-// GetMetadataUriSuffix is a free data retrieval call binding the contract method 0x52b27860.
-//
-// Solidity: function getMetadataUriSuffix() view returns(uint256)
-func (_ShoeSharkNft *ShoeSharkNftCaller) GetMetadataUriSuffix(opts *bind.CallOpts) (*big.Int, error) {
-	var out []interface{}
-	err := _ShoeSharkNft.contract.Call(opts, &out, "getMetadataUriSuffix")
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// GetMetadataUriSuffix is a free data retrieval call binding the contract method 0x52b27860.
-//
-// Solidity: function getMetadataUriSuffix() view returns(uint256)
-func (_ShoeSharkNft *ShoeSharkNftSession) GetMetadataUriSuffix() (*big.Int, error) {
-	return _ShoeSharkNft.Contract.GetMetadataUriSuffix(&_ShoeSharkNft.CallOpts)
-}
-
-// GetMetadataUriSuffix is a free data retrieval call binding the contract method 0x52b27860.
-//
-// Solidity: function getMetadataUriSuffix() view returns(uint256)
-func (_ShoeSharkNft *ShoeSharkNftCallerSession) GetMetadataUriSuffix() (*big.Int, error) {
-	return _ShoeSharkNft.Contract.GetMetadataUriSuffix(&_ShoeSharkNft.CallOpts)
-}
-
 // GetOwner is a free data retrieval call binding the contract method 0x893d20e8.
 //
 // Solidity: function getOwner() view returns(address)
@@ -364,37 +333,6 @@ func (_ShoeSharkNft *ShoeSharkNftSession) GetTokenCounter() (*big.Int, error) {
 // Solidity: function getTokenCounter() view returns(uint256)
 func (_ShoeSharkNft *ShoeSharkNftCallerSession) GetTokenCounter() (*big.Int, error) {
 	return _ShoeSharkNft.Contract.GetTokenCounter(&_ShoeSharkNft.CallOpts)
-}
-
-// GetTokenURI is a free data retrieval call binding the contract method 0x3bb3a24d.
-//
-// Solidity: function getTokenURI(uint256 index) view returns(string)
-func (_ShoeSharkNft *ShoeSharkNftCaller) GetTokenURI(opts *bind.CallOpts, index *big.Int) (string, error) {
-	var out []interface{}
-	err := _ShoeSharkNft.contract.Call(opts, &out, "getTokenURI", index)
-
-	if err != nil {
-		return *new(string), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-
-	return out0, err
-
-}
-
-// GetTokenURI is a free data retrieval call binding the contract method 0x3bb3a24d.
-//
-// Solidity: function getTokenURI(uint256 index) view returns(string)
-func (_ShoeSharkNft *ShoeSharkNftSession) GetTokenURI(index *big.Int) (string, error) {
-	return _ShoeSharkNft.Contract.GetTokenURI(&_ShoeSharkNft.CallOpts, index)
-}
-
-// GetTokenURI is a free data retrieval call binding the contract method 0x3bb3a24d.
-//
-// Solidity: function getTokenURI(uint256 index) view returns(string)
-func (_ShoeSharkNft *ShoeSharkNftCallerSession) GetTokenURI(index *big.Int) (string, error) {
-	return _ShoeSharkNft.Contract.GetTokenURI(&_ShoeSharkNft.CallOpts, index)
 }
 
 // IsApprovedForAll is a free data retrieval call binding the contract method 0xe985e9c5.
@@ -459,6 +397,37 @@ func (_ShoeSharkNft *ShoeSharkNftCallerSession) Name() (string, error) {
 	return _ShoeSharkNft.Contract.Name(&_ShoeSharkNft.CallOpts)
 }
 
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_ShoeSharkNft *ShoeSharkNftCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _ShoeSharkNft.contract.Call(opts, &out, "owner")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_ShoeSharkNft *ShoeSharkNftSession) Owner() (common.Address, error) {
+	return _ShoeSharkNft.Contract.Owner(&_ShoeSharkNft.CallOpts)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_ShoeSharkNft *ShoeSharkNftCallerSession) Owner() (common.Address, error) {
+	return _ShoeSharkNft.Contract.Owner(&_ShoeSharkNft.CallOpts)
+}
+
 // OwnerOf is a free data retrieval call binding the contract method 0x6352211e.
 //
 // Solidity: function ownerOf(uint256 tokenId) view returns(address)
@@ -521,12 +490,136 @@ func (_ShoeSharkNft *ShoeSharkNftCallerSession) SHasMinted(arg0 common.Address) 
 	return _ShoeSharkNft.Contract.SHasMinted(&_ShoeSharkNft.CallOpts, arg0)
 }
 
-// SRoot is a free data retrieval call binding the contract method 0x92959ffb.
+// SIsMinting is a free data retrieval call binding the contract method 0x6054930d.
 //
-// Solidity: function s_root() view returns(bytes32)
+// Solidity: function s_IsMinting() view returns(bool)
+func (_ShoeSharkNft *ShoeSharkNftCaller) SIsMinting(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _ShoeSharkNft.contract.Call(opts, &out, "s_IsMinting")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// SIsMinting is a free data retrieval call binding the contract method 0x6054930d.
+//
+// Solidity: function s_IsMinting() view returns(bool)
+func (_ShoeSharkNft *ShoeSharkNftSession) SIsMinting() (bool, error) {
+	return _ShoeSharkNft.Contract.SIsMinting(&_ShoeSharkNft.CallOpts)
+}
+
+// SIsMinting is a free data retrieval call binding the contract method 0x6054930d.
+//
+// Solidity: function s_IsMinting() view returns(bool)
+func (_ShoeSharkNft *ShoeSharkNftCallerSession) SIsMinting() (bool, error) {
+	return _ShoeSharkNft.Contract.SIsMinting(&_ShoeSharkNft.CallOpts)
+}
+
+// SNumbers is a free data retrieval call binding the contract method 0xa072b445.
+//
+// Solidity: function s_Numbers(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCaller) SNumbers(opts *bind.CallOpts, arg0 *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _ShoeSharkNft.contract.Call(opts, &out, "s_Numbers", arg0)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// SNumbers is a free data retrieval call binding the contract method 0xa072b445.
+//
+// Solidity: function s_Numbers(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftSession) SNumbers(arg0 *big.Int) (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SNumbers(&_ShoeSharkNft.CallOpts, arg0)
+}
+
+// SNumbers is a free data retrieval call binding the contract method 0xa072b445.
+//
+// Solidity: function s_Numbers(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCallerSession) SNumbers(arg0 *big.Int) (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SNumbers(&_ShoeSharkNft.CallOpts, arg0)
+}
+
+// SRemainingNumbers is a free data retrieval call binding the contract method 0xb545b319.
+//
+// Solidity: function s_RemainingNumbers() view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCaller) SRemainingNumbers(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _ShoeSharkNft.contract.Call(opts, &out, "s_RemainingNumbers")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// SRemainingNumbers is a free data retrieval call binding the contract method 0xb545b319.
+//
+// Solidity: function s_RemainingNumbers() view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftSession) SRemainingNumbers() (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SRemainingNumbers(&_ShoeSharkNft.CallOpts)
+}
+
+// SRemainingNumbers is a free data retrieval call binding the contract method 0xb545b319.
+//
+// Solidity: function s_RemainingNumbers() view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCallerSession) SRemainingNumbers() (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SRemainingNumbers(&_ShoeSharkNft.CallOpts)
+}
+
+// SRequestIdToTokenId is a free data retrieval call binding the contract method 0x0717300d.
+//
+// Solidity: function s_RequestIdToTokenId(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCaller) SRequestIdToTokenId(opts *bind.CallOpts, arg0 *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _ShoeSharkNft.contract.Call(opts, &out, "s_RequestIdToTokenId", arg0)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// SRequestIdToTokenId is a free data retrieval call binding the contract method 0x0717300d.
+//
+// Solidity: function s_RequestIdToTokenId(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftSession) SRequestIdToTokenId(arg0 *big.Int) (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SRequestIdToTokenId(&_ShoeSharkNft.CallOpts, arg0)
+}
+
+// SRequestIdToTokenId is a free data retrieval call binding the contract method 0x0717300d.
+//
+// Solidity: function s_RequestIdToTokenId(uint256 ) view returns(uint256)
+func (_ShoeSharkNft *ShoeSharkNftCallerSession) SRequestIdToTokenId(arg0 *big.Int) (*big.Int, error) {
+	return _ShoeSharkNft.Contract.SRequestIdToTokenId(&_ShoeSharkNft.CallOpts, arg0)
+}
+
+// SRoot is a free data retrieval call binding the contract method 0x1dc81078.
+//
+// Solidity: function s_Root() view returns(bytes32)
 func (_ShoeSharkNft *ShoeSharkNftCaller) SRoot(opts *bind.CallOpts) ([32]byte, error) {
 	var out []interface{}
-	err := _ShoeSharkNft.contract.Call(opts, &out, "s_root")
+	err := _ShoeSharkNft.contract.Call(opts, &out, "s_Root")
 
 	if err != nil {
 		return *new([32]byte), err
@@ -538,16 +631,16 @@ func (_ShoeSharkNft *ShoeSharkNftCaller) SRoot(opts *bind.CallOpts) ([32]byte, e
 
 }
 
-// SRoot is a free data retrieval call binding the contract method 0x92959ffb.
+// SRoot is a free data retrieval call binding the contract method 0x1dc81078.
 //
-// Solidity: function s_root() view returns(bytes32)
+// Solidity: function s_Root() view returns(bytes32)
 func (_ShoeSharkNft *ShoeSharkNftSession) SRoot() ([32]byte, error) {
 	return _ShoeSharkNft.Contract.SRoot(&_ShoeSharkNft.CallOpts)
 }
 
-// SRoot is a free data retrieval call binding the contract method 0x92959ffb.
+// SRoot is a free data retrieval call binding the contract method 0x1dc81078.
 //
-// Solidity: function s_root() view returns(bytes32)
+// Solidity: function s_Root() view returns(bytes32)
 func (_ShoeSharkNft *ShoeSharkNftCallerSession) SRoot() ([32]byte, error) {
 	return _ShoeSharkNft.Contract.SRoot(&_ShoeSharkNft.CallOpts)
 }
@@ -780,25 +873,67 @@ func (_ShoeSharkNft *ShoeSharkNftTransactorSession) Burn(tokenId *big.Int) (*typ
 	return _ShoeSharkNft.Contract.Burn(&_ShoeSharkNft.TransactOpts, tokenId)
 }
 
-// MintWhitelist is a paid mutator transaction binding the contract method 0xdd8e2103.
+// MintWhiteList is a paid mutator transaction binding the contract method 0x45e081b7.
 //
-// Solidity: function mintWhitelist(address player, bytes32[] proof) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactor) MintWhitelist(opts *bind.TransactOpts, player common.Address, proof [][32]byte) (*types.Transaction, error) {
-	return _ShoeSharkNft.contract.Transact(opts, "mintWhitelist", player, proof)
+// Solidity: function mintWhiteList(address player, bytes32[] proof) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactor) MintWhiteList(opts *bind.TransactOpts, player common.Address, proof [][32]byte) (*types.Transaction, error) {
+	return _ShoeSharkNft.contract.Transact(opts, "mintWhiteList", player, proof)
 }
 
-// MintWhitelist is a paid mutator transaction binding the contract method 0xdd8e2103.
+// MintWhiteList is a paid mutator transaction binding the contract method 0x45e081b7.
 //
-// Solidity: function mintWhitelist(address player, bytes32[] proof) returns()
-func (_ShoeSharkNft *ShoeSharkNftSession) MintWhitelist(player common.Address, proof [][32]byte) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.MintWhitelist(&_ShoeSharkNft.TransactOpts, player, proof)
+// Solidity: function mintWhiteList(address player, bytes32[] proof) returns()
+func (_ShoeSharkNft *ShoeSharkNftSession) MintWhiteList(player common.Address, proof [][32]byte) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.MintWhiteList(&_ShoeSharkNft.TransactOpts, player, proof)
 }
 
-// MintWhitelist is a paid mutator transaction binding the contract method 0xdd8e2103.
+// MintWhiteList is a paid mutator transaction binding the contract method 0x45e081b7.
 //
-// Solidity: function mintWhitelist(address player, bytes32[] proof) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactorSession) MintWhitelist(player common.Address, proof [][32]byte) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.MintWhitelist(&_ShoeSharkNft.TransactOpts, player, proof)
+// Solidity: function mintWhiteList(address player, bytes32[] proof) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactorSession) MintWhiteList(player common.Address, proof [][32]byte) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.MintWhiteList(&_ShoeSharkNft.TransactOpts, player, proof)
+}
+
+// RawFulfillRandomWords is a paid mutator transaction binding the contract method 0x1fe543e3.
+//
+// Solidity: function rawFulfillRandomWords(uint256 requestId, uint256[] randomWords) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestId *big.Int, randomWords []*big.Int) (*types.Transaction, error) {
+	return _ShoeSharkNft.contract.Transact(opts, "rawFulfillRandomWords", requestId, randomWords)
+}
+
+// RawFulfillRandomWords is a paid mutator transaction binding the contract method 0x1fe543e3.
+//
+// Solidity: function rawFulfillRandomWords(uint256 requestId, uint256[] randomWords) returns()
+func (_ShoeSharkNft *ShoeSharkNftSession) RawFulfillRandomWords(requestId *big.Int, randomWords []*big.Int) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.RawFulfillRandomWords(&_ShoeSharkNft.TransactOpts, requestId, randomWords)
+}
+
+// RawFulfillRandomWords is a paid mutator transaction binding the contract method 0x1fe543e3.
+//
+// Solidity: function rawFulfillRandomWords(uint256 requestId, uint256[] randomWords) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactorSession) RawFulfillRandomWords(requestId *big.Int, randomWords []*big.Int) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.RawFulfillRandomWords(&_ShoeSharkNft.TransactOpts, requestId, randomWords)
+}
+
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _ShoeSharkNft.contract.Transact(opts, "renounceOwnership")
+}
+
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_ShoeSharkNft *ShoeSharkNftSession) RenounceOwnership() (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.RenounceOwnership(&_ShoeSharkNft.TransactOpts)
+}
+
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.RenounceOwnership(&_ShoeSharkNft.TransactOpts)
 }
 
 // SafeTransferFrom is a paid mutator transaction binding the contract method 0x42842e0e.
@@ -906,48 +1041,6 @@ func (_ShoeSharkNft *ShoeSharkNftTransactorSession) SetMetadataUri(uri string) (
 	return _ShoeSharkNft.Contract.SetMetadataUri(&_ShoeSharkNft.TransactOpts, uri)
 }
 
-// SetMintMaxTotal is a paid mutator transaction binding the contract method 0x097fe575.
-//
-// Solidity: function setMintMaxTotal(uint256 count) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactor) SetMintMaxTotal(opts *bind.TransactOpts, count *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.contract.Transact(opts, "setMintMaxTotal", count)
-}
-
-// SetMintMaxTotal is a paid mutator transaction binding the contract method 0x097fe575.
-//
-// Solidity: function setMintMaxTotal(uint256 count) returns()
-func (_ShoeSharkNft *ShoeSharkNftSession) SetMintMaxTotal(count *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.SetMintMaxTotal(&_ShoeSharkNft.TransactOpts, count)
-}
-
-// SetMintMaxTotal is a paid mutator transaction binding the contract method 0x097fe575.
-//
-// Solidity: function setMintMaxTotal(uint256 count) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactorSession) SetMintMaxTotal(count *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.SetMintMaxTotal(&_ShoeSharkNft.TransactOpts, count)
-}
-
-// SetMintOneCost is a paid mutator transaction binding the contract method 0xef2148a3.
-//
-// Solidity: function setMintOneCost(uint256 cost) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactor) SetMintOneCost(opts *bind.TransactOpts, cost *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.contract.Transact(opts, "setMintOneCost", cost)
-}
-
-// SetMintOneCost is a paid mutator transaction binding the contract method 0xef2148a3.
-//
-// Solidity: function setMintOneCost(uint256 cost) returns()
-func (_ShoeSharkNft *ShoeSharkNftSession) SetMintOneCost(cost *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.SetMintOneCost(&_ShoeSharkNft.TransactOpts, cost)
-}
-
-// SetMintOneCost is a paid mutator transaction binding the contract method 0xef2148a3.
-//
-// Solidity: function setMintOneCost(uint256 cost) returns()
-func (_ShoeSharkNft *ShoeSharkNftTransactorSession) SetMintOneCost(cost *big.Int) (*types.Transaction, error) {
-	return _ShoeSharkNft.Contract.SetMintOneCost(&_ShoeSharkNft.TransactOpts, cost)
-}
-
 // SetRoot is a paid mutator transaction binding the contract method 0xdab5f340.
 //
 // Solidity: function setRoot(bytes32 newRoot) returns()
@@ -988,6 +1081,27 @@ func (_ShoeSharkNft *ShoeSharkNftSession) TransferFrom(from common.Address, to c
 // Solidity: function transferFrom(address from, address to, uint256 tokenId) returns()
 func (_ShoeSharkNft *ShoeSharkNftTransactorSession) TransferFrom(from common.Address, to common.Address, tokenId *big.Int) (*types.Transaction, error) {
 	return _ShoeSharkNft.Contract.TransferFrom(&_ShoeSharkNft.TransactOpts, from, to, tokenId)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _ShoeSharkNft.contract.Transact(opts, "transferOwnership", newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_ShoeSharkNft *ShoeSharkNftSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.TransferOwnership(&_ShoeSharkNft.TransactOpts, newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_ShoeSharkNft *ShoeSharkNftTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _ShoeSharkNft.Contract.TransferOwnership(&_ShoeSharkNft.TransactOpts, newOwner)
 }
 
 // Withdraw is a paid mutator transaction binding the contract method 0x3ccfd60b.
@@ -1596,6 +1710,159 @@ func (_ShoeSharkNft *ShoeSharkNftFilterer) ParseMetadataUpdate(log types.Log) (*
 	return event, nil
 }
 
+// ShoeSharkNftOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the ShoeSharkNft contract.
+type ShoeSharkNftOwnershipTransferredIterator struct {
+	Event *ShoeSharkNftOwnershipTransferred // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *ShoeSharkNftOwnershipTransferredIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(ShoeSharkNftOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(ShoeSharkNftOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *ShoeSharkNftOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *ShoeSharkNftOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// ShoeSharkNftOwnershipTransferred represents a OwnershipTransferred event raised by the ShoeSharkNft contract.
+type ShoeSharkNftOwnershipTransferred struct {
+	PreviousOwner common.Address
+	NewOwner      common.Address
+	Raw           types.Log // Blockchain specific contextual infos
+}
+
+// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*ShoeSharkNftOwnershipTransferredIterator, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _ShoeSharkNft.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return &ShoeSharkNftOwnershipTransferredIterator{contract: _ShoeSharkNft.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *ShoeSharkNftOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _ShoeSharkNft.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(ShoeSharkNftOwnershipTransferred)
+				if err := _ShoeSharkNft.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) ParseOwnershipTransferred(log types.Log) (*ShoeSharkNftOwnershipTransferred, error) {
+	event := new(ShoeSharkNftOwnershipTransferred)
+	if err := _ShoeSharkNft.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // ShoeSharkNftShoeSharkNftNftBurnedIterator is returned from FilterShoeSharkNftNftBurned and is used to iterate over the raw logs and unpacked data for ShoeSharkNftNftBurned events raised by the ShoeSharkNft contract.
 type ShoeSharkNftShoeSharkNftNftBurnedIterator struct {
 	Event *ShoeSharkNftShoeSharkNftNftBurned // Event containing the contract specifics and raw log
@@ -1818,14 +2085,15 @@ func (it *ShoeSharkNftShoeSharkNftNftMintedIterator) Close() error {
 
 // ShoeSharkNftShoeSharkNftNftMinted represents a ShoeSharkNftNftMinted event raised by the ShoeSharkNft contract.
 type ShoeSharkNftShoeSharkNftNftMinted struct {
-	Player  common.Address
-	TokenId *big.Int
-	Raw     types.Log // Blockchain specific contextual infos
+	Player    common.Address
+	TokenId   *big.Int
+	RequestId *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterShoeSharkNftNftMinted is a free log retrieval operation binding the contract event 0xb169f43911da2ad38176417bbe74935fc77da07aac5d00512351b11c9c0e69a0.
+// FilterShoeSharkNftNftMinted is a free log retrieval operation binding the contract event 0x7f3fb005410316e1c12471b0a260ddfa89d456cf131b9877365b0eeba79c120c.
 //
-// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId)
+// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId, uint256 requestId)
 func (_ShoeSharkNft *ShoeSharkNftFilterer) FilterShoeSharkNftNftMinted(opts *bind.FilterOpts, player []common.Address, tokenId []*big.Int) (*ShoeSharkNftShoeSharkNftNftMintedIterator, error) {
 
 	var playerRule []interface{}
@@ -1844,9 +2112,9 @@ func (_ShoeSharkNft *ShoeSharkNftFilterer) FilterShoeSharkNftNftMinted(opts *bin
 	return &ShoeSharkNftShoeSharkNftNftMintedIterator{contract: _ShoeSharkNft.contract, event: "ShoeSharkNft_NftMinted", logs: logs, sub: sub}, nil
 }
 
-// WatchShoeSharkNftNftMinted is a free log subscription operation binding the contract event 0xb169f43911da2ad38176417bbe74935fc77da07aac5d00512351b11c9c0e69a0.
+// WatchShoeSharkNftNftMinted is a free log subscription operation binding the contract event 0x7f3fb005410316e1c12471b0a260ddfa89d456cf131b9877365b0eeba79c120c.
 //
-// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId)
+// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId, uint256 requestId)
 func (_ShoeSharkNft *ShoeSharkNftFilterer) WatchShoeSharkNftNftMinted(opts *bind.WatchOpts, sink chan<- *ShoeSharkNftShoeSharkNftNftMinted, player []common.Address, tokenId []*big.Int) (event.Subscription, error) {
 
 	var playerRule []interface{}
@@ -1890,9 +2158,9 @@ func (_ShoeSharkNft *ShoeSharkNftFilterer) WatchShoeSharkNftNftMinted(opts *bind
 	}), nil
 }
 
-// ParseShoeSharkNftNftMinted is a log parse operation binding the contract event 0xb169f43911da2ad38176417bbe74935fc77da07aac5d00512351b11c9c0e69a0.
+// ParseShoeSharkNftNftMinted is a log parse operation binding the contract event 0x7f3fb005410316e1c12471b0a260ddfa89d456cf131b9877365b0eeba79c120c.
 //
-// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId)
+// Solidity: event ShoeSharkNft_NftMinted(address indexed player, uint256 indexed tokenId, uint256 requestId)
 func (_ShoeSharkNft *ShoeSharkNftFilterer) ParseShoeSharkNftNftMinted(log types.Log) (*ShoeSharkNftShoeSharkNftNftMinted, error) {
 	event := new(ShoeSharkNftShoeSharkNftNftMinted)
 	if err := _ShoeSharkNft.contract.UnpackLog(event, "ShoeSharkNft_NftMinted", log); err != nil {
@@ -2029,6 +2297,151 @@ func (_ShoeSharkNft *ShoeSharkNftFilterer) WatchShoeSharkNftWithdraw(opts *bind.
 func (_ShoeSharkNft *ShoeSharkNftFilterer) ParseShoeSharkNftWithdraw(log types.Log) (*ShoeSharkNftShoeSharkNftWithdraw, error) {
 	event := new(ShoeSharkNftShoeSharkNftWithdraw)
 	if err := _ShoeSharkNft.contract.UnpackLog(event, "ShoeSharkNft_Withdraw", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator is returned from FilterShoeSharkNftTokenIdtoTokenURI and is used to iterate over the raw logs and unpacked data for ShoeSharkNftTokenIdtoTokenURI events raised by the ShoeSharkNft contract.
+type ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator struct {
+	Event *ShoeSharkNftShoeSharkNftTokenIdtoTokenURI // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(ShoeSharkNftShoeSharkNftTokenIdtoTokenURI)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(ShoeSharkNftShoeSharkNftTokenIdtoTokenURI)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// ShoeSharkNftShoeSharkNftTokenIdtoTokenURI represents a ShoeSharkNftTokenIdtoTokenURI event raised by the ShoeSharkNft contract.
+type ShoeSharkNftShoeSharkNftTokenIdtoTokenURI struct {
+	TokenId       *big.Int
+	MetadateIndex *big.Int
+	Raw           types.Log // Blockchain specific contextual infos
+}
+
+// FilterShoeSharkNftTokenIdtoTokenURI is a free log retrieval operation binding the contract event 0x6f47fe54448c9bbe840f8436b97e684310c20e652fb8be073e176feeb991bc67.
+//
+// Solidity: event ShoeSharkNft_tokenIdtoTokenURI(uint256 indexed tokenId, uint256 metadateIndex)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) FilterShoeSharkNftTokenIdtoTokenURI(opts *bind.FilterOpts, tokenId []*big.Int) (*ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator, error) {
+
+	var tokenIdRule []interface{}
+	for _, tokenIdItem := range tokenId {
+		tokenIdRule = append(tokenIdRule, tokenIdItem)
+	}
+
+	logs, sub, err := _ShoeSharkNft.contract.FilterLogs(opts, "ShoeSharkNft_tokenIdtoTokenURI", tokenIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return &ShoeSharkNftShoeSharkNftTokenIdtoTokenURIIterator{contract: _ShoeSharkNft.contract, event: "ShoeSharkNft_tokenIdtoTokenURI", logs: logs, sub: sub}, nil
+}
+
+// WatchShoeSharkNftTokenIdtoTokenURI is a free log subscription operation binding the contract event 0x6f47fe54448c9bbe840f8436b97e684310c20e652fb8be073e176feeb991bc67.
+//
+// Solidity: event ShoeSharkNft_tokenIdtoTokenURI(uint256 indexed tokenId, uint256 metadateIndex)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) WatchShoeSharkNftTokenIdtoTokenURI(opts *bind.WatchOpts, sink chan<- *ShoeSharkNftShoeSharkNftTokenIdtoTokenURI, tokenId []*big.Int) (event.Subscription, error) {
+
+	var tokenIdRule []interface{}
+	for _, tokenIdItem := range tokenId {
+		tokenIdRule = append(tokenIdRule, tokenIdItem)
+	}
+
+	logs, sub, err := _ShoeSharkNft.contract.WatchLogs(opts, "ShoeSharkNft_tokenIdtoTokenURI", tokenIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(ShoeSharkNftShoeSharkNftTokenIdtoTokenURI)
+				if err := _ShoeSharkNft.contract.UnpackLog(event, "ShoeSharkNft_tokenIdtoTokenURI", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseShoeSharkNftTokenIdtoTokenURI is a log parse operation binding the contract event 0x6f47fe54448c9bbe840f8436b97e684310c20e652fb8be073e176feeb991bc67.
+//
+// Solidity: event ShoeSharkNft_tokenIdtoTokenURI(uint256 indexed tokenId, uint256 metadateIndex)
+func (_ShoeSharkNft *ShoeSharkNftFilterer) ParseShoeSharkNftTokenIdtoTokenURI(log types.Log) (*ShoeSharkNftShoeSharkNftTokenIdtoTokenURI, error) {
+	event := new(ShoeSharkNftShoeSharkNftTokenIdtoTokenURI)
+	if err := _ShoeSharkNft.contract.UnpackLog(event, "ShoeSharkNft_tokenIdtoTokenURI", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

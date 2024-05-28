@@ -663,6 +663,49 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/v1/points/account": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "账户积分",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "points"
+                ],
+                "summary": "账户积分",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/res.AccountPointsInfoRes"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/points/log": {
             "get": {
                 "security": [
@@ -880,6 +923,17 @@ const docTemplate = `{
                 },
                 "signature": {
                     "type": "string"
+                }
+            }
+        },
+        "res.AccountPointsInfoRes": {
+            "type": "object",
+            "properties": {
+                "linkPoints": {
+                    "type": "integer"
+                },
+                "points": {
+                    "type": "integer"
                 }
             }
         },

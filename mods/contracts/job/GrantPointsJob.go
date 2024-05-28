@@ -112,9 +112,12 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 	var points []*big.Int
 	// 遍历 map，将 keys 和 values 分别追加到切片中
 	for account, point := range accountPoints {
-		accounts = append(accounts, common.HexToAddress(account))
+		accountAddress := common.HexToAddress(account)
+		accounts = append(accounts, accountAddress)
 		accountsHex = append(accountsHex, account)
-		points = append(points, big.NewInt(point))
+
+		linkAccountPoints := pointBiz.GetPoints(accountAddress)
+		points = append(points, big.NewInt(0).Add(linkAccountPoints, big.NewInt(point)))
 	}
 
 	err = pointBiz.SetPoints(accounts, points)
@@ -135,10 +138,10 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 		}
 	}
 
-	err = dao2.AddPointsBatch(rp, accountsHex, points)
-	if err != nil {
-		log.Error("[同步积分失败][修改用户积分] ", err)
-	}
+	//err = dao2.AddPointsBatch(rp, accountsHex, points)
+	//if err != nil {
+	//	log.Error("[同步积分失败][修改用户积分] ", err)
+	//}
 
 	err = dao.InsertAccounts(rp, accountsHex)
 	if err != nil {

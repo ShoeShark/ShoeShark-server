@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"errors"
 	"fmt"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/schema"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
@@ -13,7 +14,7 @@ import (
 func AddPoints(rp *db.Repository, account string, points int64) error {
 	var userPoints schema.UserPoints
 	result := rp.First(&userPoints, "account_address = ?", account)
-	if result.Error == gorm.ErrRecordNotFound {
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		// 记录不存在，创建新记录
 		newRecord := schema.UserPoints{
 			AccountAddress: account,
@@ -29,6 +30,17 @@ func AddPoints(rp *db.Repository, account string, points int64) error {
 	// 记录存在，更新积分
 	userPoints.Points += points
 	return rp.Save(&userPoints).Error
+}
+
+func GetPoints(rp *db.Repository, account string) (*schema.UserPoints, error) {
+	var userPoints schema.UserPoints
+	err := rp.First(&userPoints, "account_address = ?", account).Error
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+
+	return &userPoints, err
 }
 
 func AddPointsBatch(rp *db.Repository, accountsHex []string, points []*big.Int) error {
