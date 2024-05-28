@@ -106,12 +106,12 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 		return
 	}
 
-	pointBiz, err := abi_repository.NewShoeSharkRewardPointRepository(cj.Client, rewardPointContractAddress, cj.privateKey)
+	pointBiz, err := abi_repository.NewShoeSharkRewardPointRepository(cj.client, rewardPointContractAddress, cj.privateKey)
 	if err != nil {
 		log.Error("init ShoeSharkRewardPointRepository error: ", err)
 	}
 
-	nftBiz, err := abi_repository.NewShoeSharkNftRepository(cj.Client, nftContractAddress, cj.privateKey)
+	nftBiz, err := abi_repository.NewShoeSharkNftRepository(cj.client, nftContractAddress, cj.privateKey)
 	if err != nil {
 		log.Error("init ShoeSharkNftRepository error: ", err)
 	}
