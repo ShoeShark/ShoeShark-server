@@ -30,12 +30,12 @@ func VerifyIsSignIn(rp *db.Repository, account string) (bool, error) {
 	tx := rp.Where("account_address = ? AND source = ? AND DATE(created_at) = ?", account, constants.SIGN_IN, today).First(&log)
 	if tx.Error != nil {
 		if tx.Error == gorm.ErrRecordNotFound {
-			return true, nil
+			return false, nil
 		}
 		return true, tx.Error
 	}
 
-	return false, nil
+	return true, nil
 }
 
 func VerifyPublishContent(rp *db.Repository, account string) (bool, error) {

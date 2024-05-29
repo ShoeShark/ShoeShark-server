@@ -4,9 +4,7 @@ import (
 	"context"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/res"
-	"github.com/shoe-shark/shoe-shark-service/mods/points/constants"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/schema"
-	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 )
@@ -20,10 +18,9 @@ func GetPointsLogs(ctx *context.Context, queryReq *req.QueryPointsLogReq) (*db.P
 	var total int64
 	var records []schema.UserPointsLog
 	var page = &db.Page{
-		Page:    queryReq.Page,
-		Size:    queryReq.Size,
-		Records: &records,
-		Total:   total,
+		Page:  queryReq.Page,
+		Size:  queryReq.Size,
+		Total: total,
 	}
 
 	dbQuery.Count(&total)
@@ -38,15 +35,11 @@ func GetPointsLogs(ctx *context.Context, queryReq *req.QueryPointsLogReq) (*db.P
 	}
 
 	var pointsLogInfo []res.PointsLogRes
-	err = util.GenericConvert(&records, &pointsLogInfo)
 
-	for i, logRes := range pointsLogInfo {
-		if logRes.Source == string(constants.SIGN_IN) {
-			pointsLogInfo[i].Source = "签到"
-		} else if logRes.Source == string(constants.PUBLISH_CONTENT) {
-			pointsLogInfo[i].Source = "发布文章"
-		}
+	for _, logRes := range records {
+		pointsLogInfo = append(pointsLogInfo, res.ConvertToPointsLogRes(&logRes))
 	}
 
+	page.Records = &pointsLogInfo
 	return page, nil
 }

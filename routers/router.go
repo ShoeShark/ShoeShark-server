@@ -2,12 +2,12 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/shoe-shark/shoe-shark-service/config"
 	_ "github.com/shoe-shark/shoe-shark-service/docs"
 	"github.com/shoe-shark/shoe-shark-service/middleware"
 	"github.com/shoe-shark/shoe-shark-service/mods"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"os"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -29,7 +29,7 @@ func CORSMiddleware() gin.HandlerFunc {
 func InitRouter() *gin.Engine {
 	r := gin.New()
 
-	if os.Getenv("GIN_MODE") == gin.DebugMode {
+	if config.GetConfig().AppMode == "dev" {
 		r.Use(CORSMiddleware())
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}

@@ -7,6 +7,7 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/dao"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
+	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 )
 
@@ -43,7 +44,7 @@ func GetCommentsByContentID(contentID uuid.UUID) ([]res.CreateContentCommentRes,
 			contentCommentInfos = append(contentCommentInfos, res.CreateContentCommentRes{
 				ContentId:      comment.ContentID,
 				Description:    comment.Description,
-				CreatedAt:      comment.CreatedAt,
+				CreatedAt:      util.CustomTime{Time: comment.CreatedAt},
 				AccountAddress: comment.AccountAddress,
 			})
 		}

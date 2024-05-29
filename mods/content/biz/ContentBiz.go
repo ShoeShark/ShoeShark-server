@@ -8,7 +8,6 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
 	pointsBiz "github.com/shoe-shark/shoe-shark-service/mods/points/biz"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/constants"
-	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 	log "github.com/sirupsen/logrus"
@@ -87,13 +86,15 @@ func UpdateContent(ctx *context.Context, req *req.UpdateContentReq) error {
 	return nil
 }
 
-func GetContent(ctx *context.Context, contentID string) (*schema.Content, error) {
+func GetContent(ctx *context.Context, contentID string) (*res.ContentInfoRes, error) {
 	rp := repository.GetPGRepository()
 	var content schema.Content
 	if err := rp.Where("content_id = ? AND is_delete = FALSE", contentID).First(&content).Error; err != nil {
 		return nil, err
 	}
-	return &content, nil
+
+	result := res.ConvertToContentInfoRes(&content)
+	return &result, nil
 }
 
 func ListContent(queryReq *req.QueryContentReq) (*db.Page, error) {
@@ -113,10 +114,9 @@ func ListContent(queryReq *req.QueryContentReq) (*db.Page, error) {
 	var total int64
 	var records []schema.Content
 	var page = &db.Page{
-		Page:    queryReq.Page,
-		Size:    queryReq.Size,
-		Records: &records,
-		Total:   total,
+		Page:  queryReq.Page,
+		Size:  queryReq.Size,
+		Total: total,
 	}
 
 	dbQuery.Count(&total)
@@ -131,7 +131,10 @@ func ListContent(queryReq *req.QueryContentReq) (*db.Page, error) {
 	}
 
 	var contentInfos []res.ContentInfoRes
-	err = util.GenericConvert(&records, &contentInfos)
+	for _, record := range records {
+		contentInfos = append(contentInfos, res.ConvertToContentInfoRes(&record))
+	}
+	page.Records = &contentInfos
 
 	return page, nil
 }

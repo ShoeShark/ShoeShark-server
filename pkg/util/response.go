@@ -1,10 +1,10 @@
 package util
 
 import (
-	"errors"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"reflect"
+	"time"
 )
 
 type Response struct {
@@ -58,29 +58,26 @@ func ResErrorWithMsg(c *gin.Context, msg string) {
 	return
 }
 
-func GenericConvert(src, dest interface{}) error {
-	srcVal := reflect.ValueOf(src)
-	destVal := reflect.ValueOf(dest).Elem()
+// CustomTime is a wrapper around time.Time to handle custom JSON formatting
+type CustomTime struct {
+	time.Time
+}
 
-	if srcVal.Kind() != reflect.Slice || destVal.Kind() != reflect.Slice {
-		return errors.New("src and dest should be slices")
+// MarshalJSON implements the json.Marshaler interface for CustomTime
+func (ct CustomTime) MarshalJSON() ([]byte, error) {
+	return json.Marshal(ct.Format("2006-01-02 15:04:05"))
+}
+
+// UnmarshalJSON implements the json.Unmarshaler interface for CustomTime
+func (ct *CustomTime) UnmarshalJSON(data []byte) error {
+	str := string(data)
+	if str == "null" {
+		return nil
 	}
-
-	for i := 0; i < srcVal.Len(); i++ {
-		srcElem := srcVal.Index(i)
-		destElem := reflect.New(destVal.Type().Elem()).Elem()
-
-		for j := 0; j < srcElem.NumField(); j++ {
-			srcField := srcElem.Type().Field(j)
-			srcFieldName := srcField.Name
-
-			if destField := destElem.FieldByName(srcFieldName); destField.IsValid() && destField.CanSet() {
-				destField.Set(srcElem.Field(j))
-			}
-		}
-
-		destVal.Set(reflect.Append(destVal, destElem))
+	parsedTime, err := time.Parse(`"2006-01-02 15:04:05"`, str)
+	if err != nil {
+		return err
 	}
-
+	ct.Time = parsedTime
 	return nil
 }
