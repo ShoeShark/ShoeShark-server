@@ -2,12 +2,12 @@ package abi_repository
 
 import (
 	"crypto/ecdsa"
-	"fmt"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi"
+	contractBiz "github.com/shoe-shark/shoe-shark-service/mods/contracts/biz"
 	log "github.com/sirupsen/logrus"
 	"math/big"
 )
@@ -56,8 +56,12 @@ func (biz *ShoeSharkRewardPointRepository) SetPoints(accounts []common.Address, 
 		return err
 	}
 
-	log.Info("SetPoints transaction successfully txHash: ", transaction.Hash().Hex())
+	txnHash := transaction.Hash().Hex()
+	log.Info("SetPoints transaction successfully txHash: ", txnHash)
 
-	fmt.Println("setPoints transaction successfully txHash: ", transaction.Hash().Hex())
+	err = contractBiz.InsertContractTransaction("0", txnHash, "setPoints")
+	if err != nil {
+		log.Info("SetPoints log error: ", txnHash, "    ", err.Error())
+	}
 	return nil
 }

@@ -3,11 +3,11 @@ package abi_repository
 import (
 	"crypto/ecdsa"
 	"errors"
-	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi"
+	contractBiz "github.com/shoe-shark/shoe-shark-service/mods/contracts/biz"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -43,10 +43,13 @@ func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
 		return err
 	}
 
-	log.Info("setRoot success txHash: ", transaction.Hash().Hex())
-	fmt.Println("setRoot hash: ", transaction.Hash().Hex())
+	txnHash := transaction.Hash().Hex()
+	log.Info("setRoot success txHash: ", txnHash)
 
-	log.Info("Set Root transaction", transaction)
+	err = contractBiz.InsertContractTransaction("0", txnHash, "setMerkleRoot")
+	if err != nil {
+		log.Info("setRoot log error: ", txnHash, "    ", err.Error())
+	}
 
 	return nil
 }
@@ -68,8 +71,13 @@ func (biz *ShoeSharkNftRepository) MintWhitelist(account common.Address, proof [
 		return err
 	}
 
-	log.Info("MintWhitelist success: ", transaction.Hash().Hex())
-	fmt.Println("MintWhitelist hash: ", transaction.Hash().Hex())
+	txnHash := transaction.Hash().Hex()
+	log.Info("MintWhitelist success: ", txnHash)
+
+	err = contractBiz.InsertContractTransaction("0", txnHash, "mintWhitelist")
+	if err != nil {
+		log.Info("MintWhitelist log error: ", txnHash, "    ", err.Error())
+	}
 
 	return nil
 }
