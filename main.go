@@ -23,17 +23,14 @@ import (
 
 func main() {
 	log.Info("Init ShoeSharkServer Start....")
-
 	config.InitConfig("resources/application.dev.yml")
 
-	ginMode := os.Getenv("GIN_MODE")
-	log.Info("GIN_MODE: ", ginMode)
-
-	privateKey := os.Getenv("PRIVATE_KEY")
-	log.Info("PRIVATE_KEY: ", privateKey)
-
-	gin.SetMode(ginMode)
 	cfg := config.GetConfig()
+	if cfg.AppMode == "dev" {
+		gin.SetMode(gin.DebugMode)
+	} else {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	logger.InitLogger()
 	repository.Init()

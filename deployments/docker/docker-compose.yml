@@ -14,4 +14,4 @@ services:
     environment:
       - GIN_MODE=debug
     env_file:
-      - /usr/shoe_shark/deploy_scripts/.env
+      - /usr/shoe_shark/deploy_scripts/test.env

@@ -1,17 +1,24 @@
+app_mode: "dev"
+
 server:
   port: 8080
 
 database:
   pg:
-    host: "150.158.25.115"
+    host: "xx"
     port: 5432
-    username: "postgres"
+    username: "xx"
     dbname: "shoe_shark"
-    password: "1qazXSW@@"
+    password: "xxx"
+
+eth:
+  private_key: "xxx"
+  fuji:
+    url: "xxx"
 
 logging:
   dir: './logs/'
   name: "shoe_shark"
-  level: "info"
+  level: "debug"
   max_size: 50
   enable: true

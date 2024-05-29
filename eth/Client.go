@@ -9,7 +9,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"math/big"
-	"os"
 )
 
 var (
@@ -19,13 +18,12 @@ var (
 
 func InitClient(cfg *config.Config) {
 	var err error
-	//clientInstance, err = ethclient.DialContext(context.Background(), "https://sepolia.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
-	clientInstance, err = ethclient.DialContext(context.Background(), "https://avalanche-fuji.infura.io/v3/599c8e1c92a54659b339ecbaad80c39c")
+	clientInstance, err = ethclient.DialContext(context.Background(), cfg.Eth.Fuji.Url)
 	if err != nil {
 		panic(fmt.Sprintf("Failed to connect to the Ethereum client: %v", err))
 	}
 
-	privateKey, err = crypto.HexToECDSA(os.Getenv("PRIVATE_KEY"))
+	privateKey, err = crypto.HexToECDSA(cfg.Eth.PrivateKey)
 	if err != nil {
 		panic(fmt.Sprintf("Failed to  init privateKey: %v", err))
 	}
