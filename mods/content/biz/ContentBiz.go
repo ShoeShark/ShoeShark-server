@@ -6,14 +6,12 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/content/schema"
+	pointsBiz "github.com/shoe-shark/shoe-shark-service/mods/points/biz"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/constants"
-	"github.com/shoe-shark/shoe-shark-service/mods/points/dao"
-	pointSchema "github.com/shoe-shark/shoe-shark-service/mods/points/schema"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
 	log "github.com/sirupsen/logrus"
-	"time"
 )
 
 func CreateContent(ctx *context.Context, req *req.CreateContentReq) error {
@@ -32,15 +30,7 @@ func CreateContent(ctx *context.Context, req *req.CreateContentReq) error {
 		return err
 	}
 
-	insertLog := pointSchema.UserPointsLog{
-		AccountAddress: accountAddress,
-		Points:         5,
-		IsSyncLink:     false,
-		Source:         string(constants.PUBLISH_CONTENT),
-		CreatedAt:      time.Now(),
-	}
-
-	err := dao.AddPoint(rp, &insertLog)
+	err := pointsBiz.AddPoints(accountAddress, 20, constants.PUBLISH_CONTENT)
 	if err != nil {
 		log.Error("[创建文章][记录积分失败] accounts: ", accountAddress, " ContentTitle: ", content.Title)
 	}

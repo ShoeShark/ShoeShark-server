@@ -2,40 +2,14 @@ package biz
 
 import (
 	"context"
-	"errors"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/constants"
-	"github.com/shoe-shark/shoe-shark-service/mods/points/dao"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/schema"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"github.com/shoe-shark/shoe-shark-service/repository"
 	"github.com/shoe-shark/shoe-shark-service/repository/db"
-	"time"
 )
-
-func SignIn(ctx *context.Context) error {
-	accountAddress := (*ctx).Value("accountAddress").(string)
-
-	isSignIn, err := dao.VerifyIsSignIn(db.GetPGRepository(), accountAddress)
-	if err != nil {
-		return err
-	}
-
-	if isSignIn {
-		return errors.New("已签到")
-	}
-
-	insertLog := schema.UserPointsLog{
-		AccountAddress: accountAddress,
-		Points:         5,
-		IsSyncLink:     false,
-		Source:         string(constants.SIGN_IN),
-		CreatedAt:      time.Now(),
-	}
-
-	return dao.AddPoint(db.GetPGRepository(), &insertLog)
-}
 
 func GetPointsLogs(ctx *context.Context, queryReq *req.QueryPointsLogReq) (*db.Page, error) {
 	// 构建查询条件

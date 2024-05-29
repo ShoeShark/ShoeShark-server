@@ -14,7 +14,7 @@ func GetUnSyncedLogs(rp *db.Repository) ([]schema.UserPointsLog, error) {
 	return logs, result.Error
 }
 
-func AddPoint(rp *db.Repository, log *schema.UserPointsLog) error {
+func AddPointsLog(rp *db.Repository, log *schema.UserPointsLog) error {
 	result := rp.Create(&log)
 	if result.Error != nil {
 		return result.Error
@@ -30,12 +30,17 @@ func VerifyIsSignIn(rp *db.Repository, account string) (bool, error) {
 	tx := rp.Where("account_address = ? AND source = ? AND DATE(created_at) = ?", account, constants.SIGN_IN, today).First(&log)
 	if tx.Error != nil {
 		if tx.Error == gorm.ErrRecordNotFound {
-			return false, nil
+			return true, nil
 		}
-		return false, tx.Error
+		return true, tx.Error
 	}
 
-	return true, nil
+	return false, nil
+}
+
+func VerifyPublishContent(rp *db.Repository, account string) (bool, error) {
+	// TODO
+	return false, nil
 }
 
 func UpdateIsSyncLink(rp *db.Repository, ids []uint, newValue bool) error {
