@@ -6,20 +6,15 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"github.com/shoe-shark/shoe-shark-service/eth"
-	"github.com/shoe-shark/shoe-shark-service/logger"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi_repository"
 	"github.com/shoe-shark/shoe-shark-service/repository"
-	"os"
 	"testing"
 )
 
 func TestGrantPointsJob(t *testing.T) {
 
-	os.Setenv("GIN_MODE", "dev")
 	config.InitConfig("../../../resources/")
-	logger.InitLogger()
 	repository.Init()
-
 	eth.InitClient(nil)
 
 	client, privateKey := eth.GetClient(), eth.GetPrivateKey()

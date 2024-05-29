@@ -7,7 +7,8 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi"
-	contractBiz "github.com/shoe-shark/shoe-shark-service/mods/contracts/biz"
+	"github.com/shoe-shark/shoe-shark-service/mods/contracts/dao"
+	"github.com/shoe-shark/shoe-shark-service/repository/db"
 	log "github.com/sirupsen/logrus"
 	"math/big"
 )
@@ -59,7 +60,7 @@ func (biz *ShoeSharkRewardPointRepository) SetPoints(accounts []common.Address, 
 	txnHash := transaction.Hash().Hex()
 	log.Info("SetPoints transaction successfully txHash: ", txnHash)
 
-	err = contractBiz.InsertContractTransaction("0", txnHash, "setPoints")
+	err = dao.InsertContractTransaction(db.GetPGRepository(), "0", txnHash, "setPoints")
 	if err != nil {
 		log.Info("SetPoints log error: ", txnHash, "    ", err.Error())
 	}

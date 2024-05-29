@@ -8,7 +8,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/shoe-shark/shoe-shark-service/config"
 	"github.com/shoe-shark/shoe-shark-service/eth"
-	"github.com/shoe-shark/shoe-shark-service/logger"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi_repository"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/constants"
@@ -22,12 +21,11 @@ import (
 func TestMintWhiteList(t *testing.T) {
 
 	config.InitConfig("../../../resources/")
-	logger.InitLogger()
 	repository.Init()
 
-	eth.InitClient(nil)
+	eth.InitClient(config.GetConfig())
 
-	valueCtx := context.WithValue(context.Background(), "accountAddress", "0x7888b7B844B4B16c03F8daCACef7dDa0F5188645")
+	valueCtx := context.WithValue(context.Background(), "accountAddress", "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69")
 	err := MintWhiteList(&valueCtx)
 	if err != nil {
 		t.Error(err)
@@ -40,9 +38,9 @@ func TestUpNft(t *testing.T) {
 	//logger.InitLogger()
 	repository.Init()
 
-	eth.InitClient(nil)
+	eth.InitClient(config.GetConfig())
 
-	accountAddress := "0x7888b7B844B4B16c03F8daCACef7dDa0F5188645"
+	accountAddress := "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69"
 	client := eth.GetClient()
 	privateKey := eth.GetPrivateKey()
 
@@ -70,7 +68,7 @@ func TestUpNft(t *testing.T) {
 		opts,
 		common.HexToAddress(accountAddress),
 		common.HexToAddress("0x09cE8D7E2eC68C4445c8a7D1B922ebc0EFCe2366"),
-		big.NewInt(1),
+		big.NewInt(2),
 		encode,
 	)
 	if err != nil {

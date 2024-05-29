@@ -7,7 +7,8 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/shoe-shark/shoe-shark-service/eth"
 	"github.com/shoe-shark/shoe-shark-service/mods/contracts/abi"
-	contractBiz "github.com/shoe-shark/shoe-shark-service/mods/contracts/biz"
+	"github.com/shoe-shark/shoe-shark-service/mods/contracts/dao"
+	"github.com/shoe-shark/shoe-shark-service/repository/db"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -46,7 +47,7 @@ func (biz *ShoeSharkNftRepository) SetMerkleRoot(merkleRoot [32]byte) error {
 	txnHash := transaction.Hash().Hex()
 	log.Info("setRoot success txHash: ", txnHash)
 
-	err = contractBiz.InsertContractTransaction("0", txnHash, "setMerkleRoot")
+	err = dao.InsertContractTransaction(db.GetPGRepository(), "0", txnHash, "setMerkleRoot")
 	if err != nil {
 		log.Info("setRoot log error: ", txnHash, "    ", err.Error())
 	}
@@ -74,7 +75,7 @@ func (biz *ShoeSharkNftRepository) MintWhitelist(account common.Address, proof [
 	txnHash := transaction.Hash().Hex()
 	log.Info("MintWhitelist success: ", txnHash)
 
-	err = contractBiz.InsertContractTransaction("0", txnHash, "mintWhitelist")
+	err = dao.InsertContractTransaction(db.GetPGRepository(), "0", txnHash, "mintWhitelist")
 	if err != nil {
 		log.Info("MintWhitelist log error: ", txnHash, "    ", err.Error())
 	}

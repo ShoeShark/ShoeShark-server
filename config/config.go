@@ -5,6 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 	"os"
+	"strings"
 )
 
 var cfg Config
@@ -66,8 +67,16 @@ func InitConfig(resourceDirectory string) {
 	}
 
 	if cfg.AppMode == "dev" {
-		err := godotenv.Load("config/local.env")
-		if err != nil {
+		var errs error
+		if strings.Contains(resourceDirectory, "../") {
+			envFile := strings.Replace(resourceDirectory, "resources", "config", 1)
+			errs = godotenv.Load(envFile + "/local.env")
+
+		} else {
+			errs = godotenv.Load("config/local.env")
+		}
+
+		if errs != nil {
 			log.Error("Error loading .env file:\t", err.Error())
 		}
 	}
