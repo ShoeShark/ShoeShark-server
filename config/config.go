@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 	"os"
@@ -54,14 +55,21 @@ func GetConfig() *Config {
 	return &cfg
 }
 
-func InitConfig(filePath string) {
-	data, err := os.ReadFile(filePath)
+func InitConfig(resourceDirectory string) {
+	ymlData, err := os.ReadFile(resourceDirectory + "/application.yml")
 	if err != nil {
 		panic("parse config fail" + err.Error())
 	}
 
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
+	if err := yaml.Unmarshal(ymlData, &cfg); err != nil {
 		panic("parse config fail" + err.Error())
+	}
+
+	if cfg.AppMode == "dev" {
+		err := godotenv.Load("config/local.env")
+		if err != nil {
+			log.Error("Error loading .env file:\t", err.Error())
+		}
 	}
 
 	appMode := os.Getenv("APP_MODE")

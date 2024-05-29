@@ -23,7 +23,7 @@ import (
 
 func main() {
 	log.Info("Init ShoeSharkServer Start....")
-	config.InitConfig("resources/application.dev.yml")
+	config.InitConfig("resources/")
 
 	cfg := config.GetConfig()
 	if cfg.AppMode == "dev" {

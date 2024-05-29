@@ -16,7 +16,7 @@ import (
 func TestGrantPointsJob(t *testing.T) {
 
 	os.Setenv("GIN_MODE", "dev")
-	config.InitConfig("../../../resources/application.dev.yml")
+	config.InitConfig("../../../resources/")
 	logger.InitLogger()
 	repository.Init()
 

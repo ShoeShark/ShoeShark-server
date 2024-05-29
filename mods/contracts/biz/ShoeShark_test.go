@@ -21,7 +21,7 @@ import (
 
 func TestMintWhiteList(t *testing.T) {
 
-	config.InitConfig("../../../resources/application.dev.yml")
+	config.InitConfig("../../../resources/")
 	logger.InitLogger()
 	repository.Init()
 
@@ -36,7 +36,7 @@ func TestMintWhiteList(t *testing.T) {
 
 func TestUpNft(t *testing.T) {
 
-	config.InitConfig("../../../resources/application.dev.yml")
+	config.InitConfig("../../../resources/")
 	//logger.InitLogger()
 	repository.Init()
 
@@ -84,7 +84,7 @@ func TestUpNft(t *testing.T) {
 
 func TestUpNftMarket(t *testing.T) {
 
-	config.InitConfig("../../../resources/application.dev.yml")
+	config.InitConfig("../../../resources/")
 	//logger.InitLogger()
 	repository.Init()
 
