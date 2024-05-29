@@ -77,7 +77,7 @@ func InitConfig(resourceDirectory string) {
 		}
 
 		if errs != nil {
-			log.Error("Error loading .env file:\t", err.Error())
+			log.Error("Error loading .env file:\t", errs)
 		}
 	}
 
