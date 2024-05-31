@@ -111,13 +111,11 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 	}
 
 	var accounts []common.Address
-	var accountsHex []string
 	var points []*big.Int
 	// 遍历 map，将 keys 和 values 分别追加到切片中
 	for account, point := range accountPoints {
 		accountAddress := common.HexToAddress(account)
 		accounts = append(accounts, accountAddress)
-		accountsHex = append(accountsHex, account)
 
 		linkAccountPoints := pointBiz.GetPoints(accountAddress)
 		points = append(points, big.NewInt(0).Add(linkAccountPoints, big.NewInt(point)))
@@ -126,6 +124,14 @@ func (cj *ShoeSharkContractJob) startGrantPointsJob() {
 	err = pointBiz.SetPoints(accounts, points)
 	if err != nil {
 		log.Error("[同步积分失败] init pointBiz error: ", err)
+		return
+	}
+
+	// 获取所有账户生成root
+	accountsHex, err := dao2.GetAllAccountAddresses(rp)
+	if err != nil {
+		log.Error("[同步积分失败] GetAllAccountAddresses error: ", err)
+		return
 	}
 
 	merkleRoot, _, _ := eth.BuildMerkleTree(accountsHex)

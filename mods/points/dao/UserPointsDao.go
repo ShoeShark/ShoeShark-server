@@ -43,6 +43,15 @@ func GetPoints(rp *db.Repository, account string) (*schema.UserPoints, error) {
 	return &userPoints, err
 }
 
+func GetAllAccountAddresses(rp *db.Repository) ([]string, error) {
+	var addresses []string
+	err := rp.Model(&schema.UserPoints{}).Pluck("account_address", &addresses).Error
+	if err != nil {
+		return nil, err
+	}
+	return addresses, nil
+}
+
 func AddPointsBatch(rp *db.Repository, accountsHex []string, points []*big.Int) error {
 	if len(accountsHex) != len(points) {
 		return fmt.Errorf("accounts and points arrays must be of the same length")
