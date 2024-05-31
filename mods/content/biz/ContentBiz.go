@@ -110,6 +110,9 @@ func ListContent(queryReq *req.QueryContentReq) (*db.Page, error) {
 	if queryReq.AccountAddress != "" {
 		dbQuery = dbQuery.Where("account_address = ?", queryReq.AccountAddress)
 	}
+	if queryReq.Location != "" {
+		dbQuery = dbQuery.Where("location = ?", queryReq.Location)
+	}
 
 	var total int64
 	var records []schema.Content
@@ -125,7 +128,7 @@ func ListContent(queryReq *req.QueryContentReq) (*db.Page, error) {
 	}
 
 	offset := (queryReq.Page - 1) * queryReq.Size
-	err := dbQuery.Offset(offset).Limit(queryReq.Size).Find(&records).Error
+	err := dbQuery.Order("created_at DESC").Offset(offset).Limit(queryReq.Size).Find(&records).Error
 	if err != nil {
 		return nil, err
 	}
