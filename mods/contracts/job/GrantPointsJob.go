@@ -34,14 +34,8 @@ func (cj *ShoeSharkContractJob) StartJob() {
 }
 
 func (cj *ShoeSharkContractJob) scheduleTask() {
-	// 设置定时任务的执行时间为每天的0点
-	nextRun := time.Now().Truncate(24 * time.Hour).Add(24 * time.Hour)
-	if time.Now().Hour() >= 0 {
-		nextRun = nextRun.Add(24 * time.Hour)
-	}
-
 	// 计算当前时间到执行时间的间隔
-	duration := nextRun.Sub(time.Now())
+	duration := 5 * time.Minute
 
 	// 创建一个定时器
 	timer := time.NewTimer(duration)
@@ -54,7 +48,7 @@ func (cj *ShoeSharkContractJob) scheduleTask() {
 			cj.startGrantPointsJob()
 
 			// 重置定时器
-			timer.Reset(24 * time.Hour)
+			timer.Reset(duration)
 		}
 	}
 }

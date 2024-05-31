@@ -55,7 +55,7 @@ func AddPoints(accountAddress string, points int64, addType constants.PointsSour
 		AccountAddress: accountAddress,
 		Points:         points,
 		IsSyncLink:     false,
-		Source:         string(constants.SIGN_IN),
+		Source:         string(addType),
 		CreatedAt:      time.Now(),
 	}
 

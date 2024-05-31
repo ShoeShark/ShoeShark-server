@@ -26,7 +26,7 @@ func TestMintWhiteList(t *testing.T) {
 	eth.InitClient(config.GetConfig())
 
 	valueCtx := context.WithValue(context.Background(), "accountAddress", "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69")
-	err := MintWhiteList(&valueCtx)
+	_, err := MintWhiteList(&valueCtx)
 	if err != nil {
 		t.Error(err)
 	}
