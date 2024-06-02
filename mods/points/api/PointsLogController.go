@@ -7,6 +7,7 @@ import (
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/req"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/api/res"
 	"github.com/shoe-shark/shoe-shark-service/mods/points/biz"
+	"github.com/shoe-shark/shoe-shark-service/mods/points/constants"
 	"github.com/shoe-shark/shoe-shark-service/pkg/util"
 	"strconv"
 )
@@ -99,4 +100,26 @@ func PointsLogsHandler(c *gin.Context) {
 	}
 
 	util.ResOkWithData(c, logs)
+}
+
+// AddPublishContentPointsHandler
+// @Summary 发布文章添加积分
+// @Description 发布文章添加积分
+// @Tags points
+// @Accept  json
+// @Produce  json
+// @Security ApiKeyAuth
+// @Success 200 "ok"
+// @Failure 500 {object} util.Response{Msg=string}
+// @Router /api/v1/points/add/publish/content [get]
+func AddPublishContentPointsHandler(c *gin.Context) {
+
+	accountAddress := c.GetString("accountAddress")
+
+	err := biz.AddPoints(accountAddress, 20, constants.PUBLISH_CONTENT)
+	if err != nil {
+		util.ResErrorWithMsg(c, err.Error())
+	}
+
+	util.ResOk(c)
 }

@@ -590,7 +590,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/res.ContentInfoRes"
+                            "$ref": "#/definitions/res.MintNftRes"
                         }
                     },
                     "500": {
@@ -684,6 +684,49 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/res.AccountPointsInfoRes"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/points/add/publish/content": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "发布文章添加积分",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "points"
+                ],
+                "summary": "发布文章添加积分",
+                "responses": {
+                    "200": {
+                        "description": "ok"
                     },
                     "500": {
                         "description": "Internal Server Error",
@@ -943,11 +986,11 @@ const docTemplate = `{
                 "accountAddress": {
                     "type": "string"
                 },
-                "contentID": {
+                "contentId": {
                     "type": "string"
                 },
-                "created_at": {
-                    "type": "string"
+                "createdAt": {
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "description": {
                     "type": "string"
@@ -973,7 +1016,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "description": {
                     "type": "string"
@@ -988,11 +1031,22 @@ const docTemplate = `{
                 }
             }
         },
+        "res.MintNftRes": {
+            "type": "object",
+            "properties": {
+                "proof": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "res.PointsLogRes": {
             "type": "object",
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "isSyncLink": {
                     "type": "boolean"
@@ -1023,6 +1077,14 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "util.CustomTime": {
+            "type": "object",
+            "properties": {
+                "time.Time": {
                     "type": "string"
                 }
             }

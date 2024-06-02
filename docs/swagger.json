@@ -583,7 +583,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/res.ContentInfoRes"
+                            "$ref": "#/definitions/res.MintNftRes"
                         }
                     },
                     "500": {
@@ -677,6 +677,49 @@
                         "schema": {
                             "$ref": "#/definitions/res.AccountPointsInfoRes"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/util.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/points/add/publish/content": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "发布文章添加积分",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "points"
+                ],
+                "summary": "发布文章添加积分",
+                "responses": {
+                    "200": {
+                        "description": "ok"
                     },
                     "500": {
                         "description": "Internal Server Error",
@@ -936,11 +979,11 @@
                 "accountAddress": {
                     "type": "string"
                 },
-                "contentID": {
+                "contentId": {
                     "type": "string"
                 },
-                "created_at": {
-                    "type": "string"
+                "createdAt": {
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "description": {
                     "type": "string"
@@ -966,7 +1009,7 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "description": {
                     "type": "string"
@@ -981,11 +1024,22 @@
                 }
             }
         },
+        "res.MintNftRes": {
+            "type": "object",
+            "properties": {
+                "proof": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "res.PointsLogRes": {
             "type": "object",
             "properties": {
                 "createdAt": {
-                    "type": "string"
+                    "$ref": "#/definitions/util.CustomTime"
                 },
                 "isSyncLink": {
                     "type": "boolean"
@@ -1016,6 +1070,14 @@
             "type": "object",
             "properties": {
                 "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "util.CustomTime": {
+            "type": "object",
+            "properties": {
+                "time.Time": {
                     "type": "string"
                 }
             }

@@ -59,10 +59,10 @@ definitions:
     properties:
       accountAddress:
         type: string
-      contentID:
+      contentId:
         type: string
-      created_at:
-        type: string
+      createdAt:
+        $ref: '#/definitions/util.CustomTime'
       description:
         type: string
       isPublic:
@@ -79,7 +79,7 @@ definitions:
       contentId:
         type: string
       createdAt:
-        type: string
+        $ref: '#/definitions/util.CustomTime'
       description:
         type: string
     type: object
@@ -88,10 +88,17 @@ definitions:
       nonce:
         type: string
     type: object
+  res.MintNftRes:
+    properties:
+      proof:
+        items:
+          type: string
+        type: array
+    type: object
   res.PointsLogRes:
     properties:
       createdAt:
-        type: string
+        $ref: '#/definitions/util.CustomTime'
       isSyncLink:
         type: boolean
       points:
@@ -111,6 +118,11 @@ definitions:
   res.VerifySignatureRes:
     properties:
       token:
+        type: string
+    type: object
+  util.CustomTime:
+    properties:
+      time.Time:
         type: string
     type: object
   util.Response:
@@ -454,7 +466,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/res.ContentInfoRes'
+            $ref: '#/definitions/res.MintNftRes'
         "500":
           description: Internal Server Error
           schema:
@@ -522,6 +534,30 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: 账户积分
+      tags:
+      - points
+  /api/v1/points/add/publish/content:
+    get:
+      consumes:
+      - application/json
+      description: 发布文章添加积分
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/util.Response'
+            - properties:
+                Msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 发布文章添加积分
       tags:
       - points
   /api/v1/points/log:
